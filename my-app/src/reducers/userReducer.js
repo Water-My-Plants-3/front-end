@@ -20,13 +20,19 @@ const intialState = {
     error: null,
 }
 
-export default function userReducer(state = intialState, action) {
+export const userReducer = (state = intialState, action) => {
     switch (action.type) {
         // user register
         case CREATE_USER_START:
             return {
                 ...state,
                 creatingUser: true,
+            }
+        case CREATE_USER_SUCCESS:
+            return {
+                ...state,
+                creatingUser: false,
+                error: action.payload.err
             }
         case CREATE_USER_FAILED:
             return {

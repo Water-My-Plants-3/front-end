@@ -12,10 +12,10 @@ export const CREATE_USER_FAILED = 'CREATE_USER_FAILED';
 export const createUser = user => {
     const newUser = axios.post("/create", user);
     return dispatch => {
-        dispatch({ type: CREATING_USER });
+        dispatch({ type: CREATE_USER_START });
         newUser
             .then(({ data }) => {
-                dispatch({ type: CREATE_USER, payload: data });
+                dispatch({ type: CREATE_USER_SUCCESS, payload: data });
             })
             .catch(err => {
                 dispatch({ type: CREATE_USER_FAILED, payload: err });
@@ -30,10 +30,10 @@ export const GET_USER_FAILED = 'GET_USER_FAILED';
 export const getUser = () => {
     const user = axios.get("/get");
     return dispatch => {
-        dispatch({ type: GETTING_USER });
+        dispatch({ type: GET_USER_START });
         user
             .then(response => {
-                dispatch({ type: GET_USER, payload: response.data });
+                dispatch({ type: GET_USER_SUCCESS, payload: response.data });
             })
             .catch(err => {
                 dispatch({ type: GET_USER_FAILED, payload: err });
@@ -50,10 +50,10 @@ export const deleteUser = id => {
         data: { id }
     });
     return dispatch => {
-        dispatch({ type: DELETING_USER });
+        dispatch({ type: DELETE_USER_START });
         deletedUser
             .then(({ data }) => {
-                dispatch({ type: DELETE_USER, payload: data });
+                dispatch({ type: DELETE_USER_SUCCESS, payload: data });
             })
             .catch(err => {
                 dispatch({ type: DELETE_USER_FAILED, payload: err });

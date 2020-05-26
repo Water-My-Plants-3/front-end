@@ -5,4 +5,4 @@ import { userReducer as user } from './userReducer';
 export default combineReducers({
     plants,
     user,
-  });
+});

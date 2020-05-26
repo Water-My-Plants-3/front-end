@@ -16,7 +16,7 @@ export const plantReducer = (state = initialState, action) => {
         case FETCH_PLANT_SUCCESS:
             return{
                 ...state,
-                players: action.payload,
+                plants: action.payload,
                 isFetching: false
             }
         case FETCH_PLANT_FAIL:

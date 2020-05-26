@@ -1,4 +1,5 @@
 import React from 'react'
+import axiosWithAuth from "../utils/axiosWithAuth"
 
 const PlantForm = props => {
     const [plants, setPlants] = useState({
@@ -9,6 +10,11 @@ const PlantForm = props => {
     })
 
 
+    const handleSubmit = e => {
+        e.preventDefault()
+        axiosWithAuth()
+        // post request ex: (/api/plants)
+    }
 
     const handleChange = e => {
         setPlants({...plants, [e.target.name]: e.target.value})
@@ -16,7 +22,7 @@ const PlantForm = props => {
 
     return(
         <>
-            <form>
+            <form onSubmit = {handleSubmit}>
                 <input
                     type = "text"
                     placeholder = "nickname"

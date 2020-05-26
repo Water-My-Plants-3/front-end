@@ -1,8 +1,7 @@
 import axios from 'axios'
 
 const Auth = () => {
-    const token = localStorage.getItem('token')
-
+    const token = JSON.parse(localStorage.getItem('token'));
     return axios.create({
         baseURL: " https://watermyplants-core.herokuapp.com/", // Api check
         headers: {

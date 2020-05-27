@@ -18,6 +18,8 @@ import {
 const intialState = {
     isFetching: false,
     user: {},
+    username: '',
+    password: '',
     error: null,
 }
 
@@ -33,7 +35,9 @@ export const userReducer = (state = intialState, action) => {
         case CREATE_USER_SUCCESS:
             return {
                 ...state,
-                user: action.payload,
+                // user: action.payload,
+                username: action.payload.username,
+                password: action.payload.password,
                 error: false,
             }
         case CREATE_USER_FAILED:
@@ -41,8 +45,8 @@ export const userReducer = (state = intialState, action) => {
                 ...state,
                 error: action.payload.Error,
             }
-        
-            // user login
+
+        // user login
         case GET_USER_START:
             return {
                 ...state,

@@ -1,5 +1,5 @@
 // import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 // const URL = "https://watermyplants-core.herokuapp.com/api/users";
@@ -11,6 +11,7 @@ export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const CREATE_USER_FAILED = 'CREATE_USER_FAILED';
 
 // (`${URL}/register`, user)
+
 export const createUser = user => {
     return dispatch => {
         dispatch({ type: CREATE_USER_START })
@@ -30,18 +31,18 @@ export const GET_USER_START = 'GET_USER_START';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_FAILED = 'GET_USER_FAILED';
 
-export const getUser = () => {
+export const getUser = user => {
     return dispatch => {
-        dispatch({ type: GET_USER_START });
+        dispatch({ type: GET_USER_START })
         axiosWithAuth()
-        .get("/users/login")
-            .then(response => {
-                dispatch({ type: GET_USER_SUCCESS, payload: response.data });
+            .post("/users/login", user)
+            .then(({ data }) => {
+                dispatch({ type: GET_USER_SUCCESS, payload: data })
             })
             .catch(err => {
                 dispatch({ type: GET_USER_FAILED, payload: err });
-            });
-    };
+            })
+    }
 };
 
 // export const DELETE_USER_START = 'DELETE_USER_START';

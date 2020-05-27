@@ -4,7 +4,7 @@ import './App.css';
 // import SignUpForm from "./components/SignUp";
 import Signup from "./components/Signup";
 import { initialFormValues } from "./constants/SignUpConstants";
-import { LoginForm } from './components/Login';
+import LoginForm from './components/Login';
 import { initialLoginFormValues } from "./constants/LoginFormConstants";
 import PlantForm from "./components/PlantForm";
 import Plants from "./components/Plants";

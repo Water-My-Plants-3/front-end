@@ -3,19 +3,21 @@ import {
     CREATE_USER_SUCCESS,
     CREATE_USER_FAILED,
 
-    GET_USER_START,
-    GET_USER_SUCCESS,
-    GET_USER_FAILED,
+    // GET_USER_START,
+    // GET_USER_SUCCESS,
+    // GET_USER_FAILED,
 
-    DELETE_USER_START,
-    DELETE_USER_SUCCESS,
-    DELETE_USER_FAILED,
+    // DELETE_USER_START,
+    // DELETE_USER_SUCCESS,
+    // DELETE_USER_FAILED,
 
-    ERROR,
+    // ERROR,
 
 } from "../actions/userActions";
 
 const intialState = {
+    isFetching: false,
+    user: {},
     creatingUser: false,
     error: null,
 }
@@ -31,8 +33,9 @@ export const userReducer = (state = intialState, action) => {
         case CREATE_USER_SUCCESS:
             return {
                 ...state,
+                user: action.payload,
                 creatingUser: false,
-                error: action.payload.err
+                error: false,
             }
         case CREATE_USER_FAILED:
             return {

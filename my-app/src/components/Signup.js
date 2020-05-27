@@ -10,6 +10,11 @@ const Signup = props => {
         pNumber: '',
     });
     console.log("props in SU", props);
+    useEffect(() => {
+        setFormValues(formValues)
+        console.log(formValues)
+   }, [formValues])
+
 
     const onChange = (e) => {
         setFormValues({ ...formValues, [e.target.name]: e.target.value });

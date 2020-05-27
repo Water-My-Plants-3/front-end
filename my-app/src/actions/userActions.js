@@ -10,7 +10,7 @@ export const CREATE_USER_FAILED = 'CREATE_USER_FAILED';
 
 
 export const createUser = user => {
-    const newUser = axios.post(`${URL}/register`, user);
+    const newUser = axios.post(`${URL}/users/register`, user);
     return dispatch => {
         dispatch({ type: CREATE_USER_START });
         newUser
@@ -29,7 +29,7 @@ export const createUser = user => {
 // export const GET_USER_FAILED = 'GET_USER_FAILED';
 
 // export const getUser = () => {
-//     const user = axios.get("/get");
+//     const user = axios.get(`${URL}/users/login`);
 //     return dispatch => {
 //         dispatch({ type: GET_USER_START });
 //         user
@@ -47,7 +47,7 @@ export const createUser = user => {
 // export const DELETE_USER_FAILED = 'DELETE_USER_FAILED';
 
 // export const deleteUser = id => {
-//     const deletedUser = axios.delete("/delete", {
+//     const deletedUser = axios.delete(`${URL}/users/${id}`, {
 //         data: { id }
 //     });
 //     return dispatch => {

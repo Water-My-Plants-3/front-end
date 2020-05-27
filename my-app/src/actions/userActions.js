@@ -1,6 +1,7 @@
 import axios from "axios";
+import { Auth } from "../utils/axiosWithAuth";
 
-const URL = "https://watermyplants-core.herokuapp.com/api";
+// const URL = "https://watermyplants-core.herokuapp.com/api";
 
 export const ERROR = 'ERROR';
 
@@ -8,20 +9,21 @@ export const CREATE_USER_START = 'CREATE_USER_START';
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const CREATE_USER_FAILED = 'CREATE_USER_FAILED';
 
-
+// Auth()
 export const createUser = user => {
-    const newUser = axios.post(`${URL}/users/register`, user);
+    const newUser = axios
+    .post('https://watermyplants-core.herokuapp.com/api/users/register', user)
     return dispatch => {
-        dispatch({ type: CREATE_USER_START });
+        dispatch({ type: CREATE_USER_START })
         newUser
             .then(({ data }) => {
-                console.log("aaa", data);
-                dispatch({ type: CREATE_USER_SUCCESS, payload: data });
+                console.log("aaa", data)
+                dispatch({ type: CREATE_USER_SUCCESS, payload: data })
             })
             .catch(err => {
-                dispatch({ type: CREATE_USER_FAILED, payload: err });
-            });
-    };
+                dispatch({ type: CREATE_USER_FAILED, payload: err })
+            })
+    }
 };
 
 // export const GET_USER_START = 'GET_USER_START';

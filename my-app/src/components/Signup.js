@@ -8,10 +8,10 @@ const Signup = props => {
         password: '',
         phone: '',
     });
-    console.log("props in SU", props);
+    // console.log("props in SU", props);
     useEffect(() => {
         setFormValues(formValues)
-        console.log(formValues)
+        // console.log(formValues)
    }, [formValues])
 
     const onChange = (e) => {
@@ -52,8 +52,7 @@ const mapStateToProps = state => {
     return {
         isFetching: state.isFetching,
         smurf: state.user,
-        // add: state.smurf.add,
-        // error: state.smurf.error
+        error: state.error,
     };
 };
 

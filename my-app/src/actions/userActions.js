@@ -1,7 +1,8 @@
+// import React from "react";
 import axios from "axios";
-import { Auth } from "../utils/axiosWithAuth";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
-// const URL = "https://watermyplants-core.herokuapp.com/api";
+// const URL = "https://watermyplants-core.herokuapp.com/api/users";
 
 export const ERROR = 'ERROR';
 
@@ -9,13 +10,12 @@ export const CREATE_USER_START = 'CREATE_USER_START';
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const CREATE_USER_FAILED = 'CREATE_USER_FAILED';
 
-// Auth()
+// (`${URL}/register`, user)
 export const createUser = user => {
-    const newUser = axios
-    .post('https://watermyplants-core.herokuapp.com/api/users/register', user)
     return dispatch => {
         dispatch({ type: CREATE_USER_START })
-        newUser
+        axiosWithAuth()
+            .post("/users/register", user)
             .then(({ data }) => {
                 console.log("aaa", data)
                 dispatch({ type: CREATE_USER_SUCCESS, payload: data })
@@ -26,23 +26,23 @@ export const createUser = user => {
     }
 };
 
-// export const GET_USER_START = 'GET_USER_START';
-// export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
-// export const GET_USER_FAILED = 'GET_USER_FAILED';
+export const GET_USER_START = 'GET_USER_START';
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+export const GET_USER_FAILED = 'GET_USER_FAILED';
 
-// export const getUser = () => {
-//     const user = axios.get(`${URL}/users/login`);
-//     return dispatch => {
-//         dispatch({ type: GET_USER_START });
-//         user
-//             .then(response => {
-//                 dispatch({ type: GET_USER_SUCCESS, payload: response.data });
-//             })
-//             .catch(err => {
-//                 dispatch({ type: GET_USER_FAILED, payload: err });
-//             });
-//     };
-// };
+export const getUser = () => {
+    return dispatch => {
+        dispatch({ type: GET_USER_START });
+        axiosWithAuth()
+        .get("/users/login")
+            .then(response => {
+                dispatch({ type: GET_USER_SUCCESS, payload: response.data });
+            })
+            .catch(err => {
+                dispatch({ type: GET_USER_FAILED, payload: err });
+            });
+    };
+};
 
 // export const DELETE_USER_START = 'DELETE_USER_START';
 // export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';

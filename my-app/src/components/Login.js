@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { initialFormValues } from "../constants/LoginFormConstants";
+// import { initialFormValues } from "../constants/LoginFormConstants";
 
 
-
-export const LoginForm = props=>{
+export const LoginForm = props =>{
+    const loginFormValues = {
+        username: '',
+        password: '',
+        token: '',
+    }
     const { LoginOnSubmit, LoginValid, LoginOnChange} = props
-    const { username, password} = props.loginFormValues
+    const { username, password} = loginFormValues
     return(
         <form onChange={LoginOnChange} onSubmit={LoginOnSubmit} className='loginForm'>
             <label>Username: </label>

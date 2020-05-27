@@ -1,5 +1,5 @@
-import React from 'react'
-import axiosWithAuth from "../utils/axiosWithAuth"
+import React, {useState} from 'react'
+import  { createPlant }  from '../actions/plantActions'
 
 const PlantForm = props => {
     const [plants, setPlants] = useState({
@@ -12,16 +12,19 @@ const PlantForm = props => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        axiosWithAuth()
-        // post request ex: (/api/plants)
+        console.log(plants)
+        createPlant(plants)
+
     }
 
     const handleChange = e => {
+        console.log(e.target.value)
         setPlants({...plants, [e.target.name]: e.target.value})
     }
 
     return(
         <>
+        <h2>PlantForm Component</h2>
             <form onSubmit = {handleSubmit}>
                 <input
                     type = "text"
@@ -39,11 +42,12 @@ const PlantForm = props => {
                 />
                 <input 
                     type = "text"
-                    placeholder = "h20 Frequency"
-                    name = "h20 Frequency"
+                    placeholder = "h2oFrequency"
+                    name = "h2oFrequency"
                     value = {plants.h2oFrequency}
                     onChange = { e => handleChange(e)}
                 />
+                <button onClick={handleSubmit}> Submit</button>
             </form>
         </>
     )

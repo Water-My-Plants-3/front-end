@@ -2,11 +2,12 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchPlants } from '../actions/plantActions'
 
+
 const Plants = props => {
 
     useEffect(() => {
-        props.fetchPlants() // currently not fetching 
-    }, [])
+        props.fetchPlants() 
+    },[])
 
     return(
         <>

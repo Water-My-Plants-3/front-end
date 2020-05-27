@@ -1,4 +1,8 @@
 import React from 'react';
+
+import Plants from './components/Plants'
+import PlantForm from './components/PlantForm'
+
 import './App.css';
 
 function App() {
@@ -6,6 +10,8 @@ function App() {
     <div className="App">
       <header className="App-header">
        PLANTS LIFE 🌵
+       <Plants />
+       <PlantForm />
       </header>
     </div>
   );

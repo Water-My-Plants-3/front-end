@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+
 import './App.css';
 import SignUpForm from "./components/SignUp";
 import { Route, Switch } from "react-router-dom";
@@ -45,6 +46,8 @@ function App() {
       <Route exact path='/'>
       <header className="App-header">
        PLANTS LIFE 🌵
+       <Plants />
+       <PlantForm />
       </header>
       </Route>
       <Route path='/signup'>

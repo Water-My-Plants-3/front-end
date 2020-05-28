@@ -67,7 +67,7 @@ export const deleteUser = id => {
     return dispatch => {
         dispatch({ type: DELETE_USER_START });
         axiosWithAuth()
-        .delete(`${id}`)
+        .delete(`/users/${id}`)
         .then(({ data }) => {
             dispatch({ type: DELETE_USER, payload: data });
           })

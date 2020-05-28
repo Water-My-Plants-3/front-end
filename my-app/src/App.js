@@ -1,32 +1,43 @@
 import React, { useState, useEffect} from 'react';
-
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './App.css';
 
-import { Route, Switch } from "react-router-dom";
-import { LoginForm } from './components/Login';
-import  SignUp  from './components/Signup'
+
+import PlantForm from './components/PlantForm'
+import SignUp from './components/Signup'
+
+import Login from './components/Login'
 
 
 function App() {
+
   return (
     <div className="App">
-      <Switch>
-      <Route exact path='/'>
       <header className="App-header">
-       PLANTS LIFE 🌵
+        PLANTS LIFE 🌵
       </header>
-      <div>
-        <SignUp />
-      </div>
+     
 
-      </Route>
-      <Route path='/signup'>
+      <Login />
 
-      </Route>
-      <Route path='/login'>
-        <LoginForm />
-      </Route>
-      </Switch>
+
+        {/* <Router>
+          <div className="App">
+            <ul>
+              <li>
+                <Link to="/signup">Signup</Link>
+              </li>
+              <li>
+                <Link to="/login">login</Link>
+              </li>
+            </ul>
+            <Switch>
+              <Route path="/signup" component={Signup} />
+            </Switch>
+          </div>
+        </Router> */}
+
+
     </div>
   );
 }

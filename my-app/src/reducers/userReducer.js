@@ -7,6 +7,10 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_FAILED,
 
+    UPDATE_USER_START,
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_FAILED,
+    
     DELETE_USER_START,
     DELETE_USER,
 
@@ -17,6 +21,7 @@ const intialState = {
     user: {},
     username: '',
     password: '',
+    id: null,
     deletingUser: false,
     error: null,
 }
@@ -24,7 +29,6 @@ const intialState = {
 export const userReducer = (state = intialState, action) => {
     switch (action.type) {
 
-        // user register
         case CREATE_USER_START:
             return {
                 ...state,
@@ -35,6 +39,7 @@ export const userReducer = (state = intialState, action) => {
                 ...state,
                 username: action.payload.username,
                 password: action.payload.password,
+                id: action.payload.id,
                 error: false,
             }
         case CREATE_USER_FAILED:
@@ -61,19 +66,36 @@ export const userReducer = (state = intialState, action) => {
                 error: action.payload.Error,
             }
 
+        // user update
+        case UPDATE_USER_START:
+            return{
+                ...state,
+                isFetching: true,
+            }
+        case UPDATE_USER_SUCCESS:
+            return{
+                ...state,
+                user: action.payload, /// do we need to explicitly pass in user properties
+                error: false,
+            }
+        case UPDATE_USER_FAILED:
+            return{
+                ...state,
+                error: action.payload.Error
+            }
+
         // user delete
-        case DELETE_USER_START:
+        case "DELETE_USER_START":
             return {
                 ...state,
                 deletingUser: true,
             }
-        case DELETE_USER:
+        case "DELETE_USER":
             return {
                 ...state,
                 user: action.payload,
                 deletingUser: false
             };
-
         default:
             return state
     }

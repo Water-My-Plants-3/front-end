@@ -1,4 +1,3 @@
-  
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import { createUser } from "../actions/userActions";
@@ -9,19 +8,22 @@ const Signup = props => {
         password: '',
         phone: '',
     });
-
+    // console.log("props in SU", props);
     useEffect(() => {
         setFormValues(formValues)
+        // console.log(formValues)
    }, [formValues])
 
     const onChange = (e) => {
-        console.log(props)
-        setFormValues({ ...formValues, [e.target.name]: e.target.value });
+        setFormValues({
+             ...formValues,
+              [e.target.name]: e.target.value
+             });
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log('you clicked submit', "######", props);
+        console.log('you clicked submit', props);
         props.createUser(formValues);
     };
 
@@ -30,11 +32,7 @@ const Signup = props => {
             <form onSubmit={onSubmit}>
                 <div>
                     <label>Name: </label><br />
-                    <input 
-                    type="text" 
-                    name="username" onChange={onChange} 
-                    value={formValues.namusernamee}
-                     />
+                    <input type="text" name="username" onChange={onChange} value={formValues.namusernamee} />
                 </div>
                 <br />
                 <div>

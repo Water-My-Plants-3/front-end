@@ -13,7 +13,7 @@ const PlantForm = props => {
     const handleSubmit = e => {
         e.preventDefault()
         console.log(plants)
-        createPlant(plants)
+        props.createPlant(plants)
 
     }
 
@@ -52,4 +52,12 @@ const PlantForm = props => {
         </>
     )
 }
+
+const mapStateToProps = state => {
+    console.log("%%%", state)
+    return{
+       
+    }
+}
+
 export default PlantForm

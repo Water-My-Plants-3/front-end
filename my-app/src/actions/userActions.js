@@ -1,19 +1,16 @@
+// import React from "react";
+// import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
+// const URL = "https://watermyplants-core.herokuapp.com/api/users";
+
 export const ERROR = 'ERROR';
+
 export const CREATE_USER_START = 'CREATE_USER_START';
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const CREATE_USER_FAILED = 'CREATE_USER_FAILED';
 
-export const LOGIN_USER_START = 'LOGIN_USER_START';
-export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
-export const LOGIN_USER_FAILED = 'LOGIN_USER_FAILED';
-
-
-export const GET_USER_START = 'GET_USER_START';
-export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
-export const GET_USER_FAILED = 'GET_USER_FAILED';
-
+// (`${URL}/register`, user)
 
 export const createUser = user => {
     return dispatch => {
@@ -30,6 +27,9 @@ export const createUser = user => {
     }
 };
 
+export const LOGIN_USER_START = 'LOGIN_USER_START';
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const LOGIN_USER_FAILED = 'LOGIN_USER_FAILED';
 
 export const loginUser = user => {
     return dispatch => {
@@ -45,6 +45,9 @@ export const loginUser = user => {
     }
 };
 
+export const GET_USER_START = 'GET_USER_START';
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+export const GET_USER_FAILED = 'GET_USER_FAILED';
 
 export const getUser = () => {
     return dispatch => {

@@ -8,19 +8,19 @@ const Signup = props => {
         password: '',
         phone: '',
     });
-
+    // console.log("props in SU", props);
     useEffect(() => {
         setFormValues(formValues)
+        // console.log(formValues)
    }, [formValues])
 
     const onChange = (e) => {
-        console.log(props)
         setFormValues({ ...formValues, [e.target.name]: e.target.value });
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log('you clicked submit', "######", props);
+        console.log('you clicked submit', props);
         props.createUser(formValues);
     };
 
@@ -28,28 +28,20 @@ const Signup = props => {
         <div>
             <form onSubmit={onSubmit}>
                 <div>
-                    <input 
-                        type="text" 
-                        name="username" onChange={onChange} 
-                        value={formValues.namusernamee}
-                     />
+                    <label>Name: </label><br />
+                    <input type="text" name="username" onChange={onChange} value={formValues.namusernamee} />
                 </div>
+                <br />
                 <div>
-                    <input 
-                        name="password"
-                        onChange={onChange} 
-                        value={formValues.password}
-                    />
+                    <label>password: </label><br />
+                    <input name="password" onChange={onChange} value={formValues.password} />
                 </div>
-          
+                <br />
                 <div>
-                <input 
-                    name="phone" 
-                    onChange={onChange} 
-                    value={formValues.phone} 
-                    />
+                    <label>Phone number: </label><br />
+                    <input name="phone" onChange={onChange} value={formValues.phone} />
                 </div>
-         
+                <br />
                 <button type="submit">Submit</button>
             </form>
         </div>

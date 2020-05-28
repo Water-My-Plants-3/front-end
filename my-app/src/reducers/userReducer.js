@@ -7,6 +7,16 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_FAILED,
 
+    GET_USER_START,
+    GET_USER_SUCCESS,
+    GET_USER_FAILED,
+
+    // DELETE_USER_START,
+    // DELETE_USER_SUCCESS,
+    // DELETE_USER_FAILED,
+
+    // ERROR,
+
 } from "../actions/userActions";
 
 const intialState = {
@@ -14,13 +24,13 @@ const intialState = {
     user: {},
     username: '',
     password: '',
+    id: null,
     error: null,
 }
 
 export const userReducer = (state = intialState, action) => {
     switch (action.type) {
 
-        // user register
         case CREATE_USER_START:
             return {
                 ...state,
@@ -31,6 +41,7 @@ export const userReducer = (state = intialState, action) => {
                 ...state,
                 username: action.payload.username,
                 password: action.payload.password,
+                id: action.payload.id,
                 error: false,
             }
         case CREATE_USER_FAILED:

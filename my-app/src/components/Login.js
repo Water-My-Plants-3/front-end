@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/userActions'
 
-
-const LoginForm = (props)=> {
+const LoginForm = props => {
 
     const [login, setLogin] = useState({
         username: '',

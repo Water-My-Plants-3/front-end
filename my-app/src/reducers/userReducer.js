@@ -80,7 +80,7 @@ export const userReducer = (state = intialState, action) => {
         case UPDATE_USER_SUCCESS:
             return{
                 ...state,
-                user: action.payload, /// do we need to explicitly pass in user properties
+                user: action.payload, // do we need to explicitly pass in user properties
                 error: false,
             }
         case UPDATE_USER_FAILED:

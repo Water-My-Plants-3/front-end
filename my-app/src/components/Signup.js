@@ -1,4 +1,3 @@
-  
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import { createUser } from "../actions/userActions";
@@ -29,24 +28,28 @@ const Signup = props => {
         <div>
             <form onSubmit={onSubmit}>
                 <div>
-                    <label>Name: </label><br />
                     <input 
-                    type="text" 
-                    name="username" onChange={onChange} 
-                    value={formValues.namusernamee}
+                        type="text" 
+                        name="username" onChange={onChange} 
+                        value={formValues.namusernamee}
                      />
                 </div>
-                <br />
                 <div>
-                    <label>password: </label><br />
-                    <input name="password" onChange={onChange} value={formValues.password} />
+                    <input 
+                        name="password"
+                        onChange={onChange} 
+                        value={formValues.password}
+                    />
                 </div>
-                <br />
+          
                 <div>
-                    <label>Phone number: </label><br />
-                    <input name="phone" onChange={onChange} value={formValues.phone} />
+                <input 
+                    name="phone" 
+                    onChange={onChange} 
+                    value={formValues.phone} 
+                    />
                 </div>
-                <br />
+         
                 <button type="submit">Submit</button>
             </form>
         </div>

@@ -1,14 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchPlants } from '../actions/plantActions'
 
 
 const Plants = props => {
 
-    useEffect(() => {
-        props.fetchPlants() 
+    const [plants, setPlants] = useState({
+        id: Number,
+        nickname: "",
+        species: "",
+        h2oFrequency: "",
+    })
+
+    useEffect((plants) => {
+        props.fetchPlants(plants) 
     },[])
 
+    console.log(props, "######")
     return(
         <>
             <h1> Plant Component</h1>

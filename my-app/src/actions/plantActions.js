@@ -17,11 +17,11 @@ export const DELETE_PlANT_SUCCESS = "DELETE_PLANT_SUCCESS"
 export const DELETE_PLANT_FAIL = "DELETE_PLANT_FAIL"
 
 
-export const fetchPlants = () => {
+export const fetchPlants = (user) => {
     return dispatch => {
         dispatch({ type: FETCH_PLANT_START})
         axiosWithAuth()
-            .get(`/api/plants`)
+            .get(`/plants/user/${user.id}`, user)
             .then(res => {
                console.log(res)
             })
@@ -33,7 +33,7 @@ export const createPlant = (post) => {
     return dispatch => {
             dispatch({ type: POST_PLANT_START})
             axiosWithAuth()
-                .post(`/api/plants`)
+                .post(`/plants`)
                 .then(res => {console.log(res)})
         }
     }

@@ -27,22 +27,40 @@ export const createUser = user => {
     }
 };
 
+export const LOGIN_USER_START = 'LOGIN_USER_START';
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const LOGIN_USER_FAILED = 'LOGIN_USER_FAILED';
+
+export const loginUser = user => {
+    return dispatch => {
+        dispatch({ type: LOGIN_USER_START })
+        axiosWithAuth()
+            .post("/users/login", user)
+            .then(({ data }) => {
+                dispatch({ type: LOGIN_USER_SUCCESS, payload: data })
+            })
+            .catch(err => {
+                dispatch({ type: LOGIN_USER_FAILED, payload: err });
+            })
+    }
+};
+
 export const GET_USER_START = 'GET_USER_START';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_FAILED = 'GET_USER_FAILED';
 
-export const getUser = user => {
+export const getUser = () => {
     return dispatch => {
-        dispatch({ type: GET_USER_START })
+    dispatch({ type: GET_USER_START });
         axiosWithAuth()
-            .post("/users/login", user)
-            .then(({ data }) => {
-                dispatch({ type: GET_USER_SUCCESS, payload: data })
+        .get("/users/")
+            .then(response => {
+                dispatch({ type: GET_USER_SUCCESS, payload: response.data });
             })
             .catch(err => {
                 dispatch({ type: GET_USER_FAILED, payload: err });
-            })
-    }
+            });
+    };
 };
 
 // export const DELETE_USER_START = 'DELETE_USER_START';

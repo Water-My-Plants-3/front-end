@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { initialLoginFormValues } from "../constants/LoginFormConstants";
 import { connect } from 'react-redux';
-import { getUser } from "../actions/userActions";
+import { loginUser } from "../actions/userActions";
 
 const LoginForm = props => {
     // login form state hooks
@@ -19,7 +19,7 @@ const LoginForm = props => {
     const LoginOnSubmit = event => {
         event.preventDefault();
         console.log('you clicked submit', props);
-        props.getUser(loginFormValues);
+        props.loginUser(loginFormValues);
     }
 
     //login form side effects
@@ -48,5 +48,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { getUser }
+    { loginUser }
 )(LoginForm)

@@ -3,6 +3,10 @@ import {
     CREATE_USER_SUCCESS,
     CREATE_USER_FAILED,
 
+    LOGIN_USER_START,
+    LOGIN_USER_SUCCESS,
+    LOGIN_USER_FAILED,
+
     GET_USER_START,
     GET_USER_SUCCESS,
     GET_USER_FAILED,
@@ -47,18 +51,18 @@ export const userReducer = (state = intialState, action) => {
             }
 
         // user login
-        case GET_USER_START:
+        case LOGIN_USER_START:
             return {
                 ...state,
                 isFetching: true,
             }
-        case GET_USER_SUCCESS:
+        case LOGIN_USER_SUCCESS:
             return {
                 ...state,
                 user: action.payload,
                 error: false,
             }
-        case GET_USER_FAILED:
+        case LOGIN_USER_FAILED:
             return {
                 ...state,
                 error: action.payload.Error,

@@ -1,51 +1,61 @@
-import axiosWtihAuth from '../utils/axiosWithAuth'
+import axiosWithAuth from "../utils/axiosWithAuth";
 
-export const GET_USER_START = "GET_USER_START"
-export const GET_USER_SUCCESS = "GET_USER_SUCCESS"
-export const GET_USER_FAIL = "GET_USER_FAIL"
+export const ERROR = 'ERROR';
+export const CREATE_USER_START = 'CREATE_USER_START';
+export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
+export const CREATE_USER_FAILED = 'CREATE_USER_FAILED';
 
-export const fetchUser = () => {
-  return dispatch => {
-      dispatch({ type: GET_USER_START})
-      axiosWtihAuth()
-        .get(`/api/users`)
-        .then(res => {console.log(res)})
-  }
-}
+export const LOGIN_USER_START = 'LOGIN_USER_START';
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const LOGIN_USER_FAILED = 'LOGIN_USER_FAILED';
 
 
+export const GET_USER_START = 'GET_USER_START';
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+export const GET_USER_FAILED = 'GET_USER_FAILED';
 
 
+export const createUser = user => {
+    return dispatch => {
+        dispatch({ type: CREATE_USER_START })
+        axiosWithAuth()
+            .post("/users/register", user)
+            .then(({ data }) => {
+                console.log("aaa", data)
+                dispatch({ type: CREATE_USER_SUCCESS, payload: data })
+            })
+            .catch(err => {
+                dispatch({ type: CREATE_USER_FAILED, payload: err })
+            })
+    }
+};
 
 
-// export const CREATE_USER = 'CREATE_USER';
-// export const GET_FRIENDS = 'GET_USER';
-// export const ERROR = 'ERROR';
+export const loginUser = user => {
+    return dispatch => {
+        dispatch({ type: LOGIN_USER_START })
+        axiosWithAuth()
+            .post("/users/login", user)
+            .then(({ data }) => {
+                dispatch({ type: LOGIN_USER_SUCCESS, payload: data })
+            })
+            .catch(err => {
+                dispatch({ type: LOGIN_USER_FAILED, payload: err });
+            })
+    }
+};
 
-// export const createUser = user => {
-//     const newUser = axios.post(`${URL}/create`, user);
-//     return dispatch => {
-//       dispatch({ type: CREATING_USER });
-//       newUser
-//         .then(({ data }) => {
-//           dispatch({ type: CREATE_USER, payload: data });
-//         })
-//         .catch(err => {
-//           dispatch({ type: ERROR, payload: err });
-//         });
-//     };
-//   };
 
-//   export const getUser = () => {
-//     const user = axios.get(`${URL}/get`);
-//     return dispatch => {
-//       dispatch({ type: GETTING_USER });
-//       user
-//         .then(response => {
-//           dispatch({ type: GET_USER, payload: response.data });
-//         })
-//         .catch(err => {
-//           dispatch({ type: ERROR, payload: err });
-//         });
-//     };
-//   };
+export const getUser = () => {
+    return dispatch => {
+    dispatch({ type: GET_USER_START });
+        axiosWithAuth()
+        .get("/users/")
+            .then(response => {
+                dispatch({ type: GET_USER_SUCCESS, payload: response.data });
+            })
+            .catch(err => {
+                dispatch({ type: GET_USER_FAILED, payload: err });
+            });
+    };
+};

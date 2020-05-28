@@ -6,7 +6,7 @@ import PlantForm from './components/PlantForm';
 import SignUp from './components/Signup';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import Plants from './components/Plants';
+
 
 function App() {
 

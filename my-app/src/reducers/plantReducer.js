@@ -4,7 +4,7 @@ import {POST_PLANT_START, POST_PLANT_SUCCESS, POST_PLANT_FAIL } from '../actions
 const initialState = {
     plants: [],
     isFetching:false,
-    id: Number,
+    userid: Number,
     error:""
 
 }
@@ -23,7 +23,6 @@ export const plantReducer = (state = initialState, action) => {
                 ...state,
                 plants: action.payload,
                 isFetching: false,
-                id: action.payload.id 
             }
         case FETCH_PLANT_FAIL:
             return{

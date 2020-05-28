@@ -17,11 +17,11 @@ export const DELETE_PlANT_SUCCESS = "DELETE_PLANT_SUCCESS"
 export const DELETE_PLANT_FAIL = "DELETE_PLANT_FAIL"
 
 
-export const fetchPlants = (user) => {
+export const fetchPlants = (userid) => {
     return dispatch => {
         dispatch({ type: FETCH_PLANT_START})
         axiosWithAuth()
-            .get(`/plants/user/${user.id}`, user)
+            .get(`/plants/user/${userid}`)
             .then(res => {
                console.log(res)
             })

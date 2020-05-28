@@ -60,7 +60,8 @@ export const userReducer = (state = intialState, action) => {
             return {
                 ...state,
                 userIsFetching: false,
-                // userid: action.payload,
+                id: action.id,
+                username: action.username,
                 error: false,
             }
         case LOGIN_USER_FAILED:

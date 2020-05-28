@@ -1,4 +1,5 @@
 import axiosWithAuth from "../utils/axiosWithAuth";
+import jwtdecode from 'jwt-decode'
 
 export const ERROR = 'ERROR';
 
@@ -40,7 +41,13 @@ export const loginUser = user => {
         axiosWithAuth()
             .post("/users/login", user)
             .then(({ data }) => {
-                dispatch({ type: LOGIN_USER_SUCCESS, payload: data })
+                console.log(data, "##")
+                localStorage.setItem("token", data.payload)
+
+                const userId = jwtdecode(data.payload).userid
+                console.log(userId,"%%")
+
+                dispatch({ type: LOGIN_USER_SUCCESS, payload: 3})
             })
             .catch(err => {
                 dispatch({ type: LOGIN_USER_FAILED, payload: err });

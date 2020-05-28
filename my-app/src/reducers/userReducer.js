@@ -21,7 +21,7 @@ const intialState = {
     user: {},
     username: '',
     password: '',
-    id: null,
+    userid: null,
     deletingUser: false,
     error: null,
 }
@@ -57,7 +57,7 @@ export const userReducer = (state = intialState, action) => {
         case LOGIN_USER_SUCCESS:
             return {
                 ...state,
-                user: action.payload,
+                userid: action.payload,
                 error: false,
             }
         case LOGIN_USER_FAILED:
@@ -85,12 +85,12 @@ export const userReducer = (state = intialState, action) => {
             }
 
         // user delete
-        case "DELETE_USER_START":
+        case DELETE_USER_START:
             return {
                 ...state,
                 deletingUser: true,
             }
-        case "DELETE_USER":
+        case DELETE_USER:
             return {
                 ...state,
                 user: action.payload,

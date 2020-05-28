@@ -1,11 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
-import { deleteUser } from "../actions/userActions";
+import { deleteUser, loginUser} from "../actions/userActions";
+import { fetchPlants } from "../actions/plantActions"
 
-function Dashboard() {
+
+const Dashboard = props => {
+    
+    const [plants, setPlants] = useState({
+        id: null,
+        nickname: "",
+        species: "",
+        h2oFrequency: "",
+    })
+
+    const [user, setUser] = useState({
+        userid: null,
+        username: "",
+        password: "",
+        phone:""
+    })
+
+    
+
+
+
+    useEffect((userid) => {
+        props.fetchPlants(userid) 
+    },[])
+
+
     return (
         <div>
-            hello
+            hello from Dashboard Component
         </div>
     )
 }
@@ -14,12 +40,13 @@ const mapStateToProps = state => {
     console.log('BRED', state);
     return {
         isFetching: state.isFetching,
-        user: state.user,
+        userid: state.userid,
         error: state.error,
+        plants: state.plants
     };
 };
 
 export default connect(
     mapStateToProps,
-    { deleteUser }
+    { loginUser, deleteUser, fetchPlants }
 )(Dashboard)

@@ -1,9 +1,12 @@
 import React, { useState, useEffect} from 'react';
 
 import './App.css';
-import SignUpForm from "./components/SignUp";
+
 import { Route, Switch } from "react-router-dom";
 import { LoginForm } from './components/Login';
+import  SignUp  from './components/Signup'
+
+
 function App() {
   return (
     <div className="App">
@@ -11,12 +14,14 @@ function App() {
       <Route exact path='/'>
       <header className="App-header">
        PLANTS LIFE 🌵
-       <Plants />
-       <PlantForm />
       </header>
+      <div>
+        <SignUp />
+      </div>
+
       </Route>
       <Route path='/signup'>
-        <SignUpForm/>
+
       </Route>
       <Route path='/login'>
         <LoginForm />

@@ -4,7 +4,6 @@ import PrivateRoute from './utils/PrivateRoute'
 
 import './App.css';
 
-
 import PlantForm from './components/PlantForm'
 import SignUp from './components/Signup'
 

@@ -1,8 +1,5 @@
-// import React from "react";
-// import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
-// const URL = "https://watermyplants-core.herokuapp.com/api/users";
 
 export const ERROR = 'ERROR';
 
@@ -10,7 +7,6 @@ export const CREATE_USER_START = 'CREATE_USER_START';
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const CREATE_USER_FAILED = 'CREATE_USER_FAILED';
 
-// (`${URL}/register`, user)
 
 export const createUser = user => {
     return dispatch => {
@@ -45,20 +41,20 @@ export const loginUser = user => {
     }
 };
 
-export const GET_USER_START = 'GET_USER_START';
-export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
-export const GET_USER_FAILED = 'GET_USER_FAILED';
+export const UPDATE_USER_START = 'UPDATE_USER_START';
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
+export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED';
 
-export const getUser = () => {
+export const updateUser = (user) => {
     return dispatch => {
-    dispatch({ type: GET_USER_START });
+    dispatch({ type: UPDATE_USER_START });
         axiosWithAuth()
-        .get("/users/")
+        .put(`/users/${user.id}`, user)
             .then(response => {
-                dispatch({ type: GET_USER_SUCCESS, payload: response.data });
+                dispatch({ type: UPDATE_USER_SUCCESS, payload: response.data });
             })
             .catch(err => {
-                dispatch({ type: GET_USER_FAILED, payload: err });
+                dispatch({ type: UPDATE_USER_FAILED, payload: err });
             });
     };
 };

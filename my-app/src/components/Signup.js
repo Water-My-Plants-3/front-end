@@ -15,7 +15,10 @@ const Signup = props => {
    }, [formValues])
 
     const onChange = (e) => {
-        setFormValues({ ...formValues, [e.target.name]: e.target.value });
+        setFormValues({
+             ...formValues,
+              [e.target.name]: e.target.value
+             });
     };
 
     const onSubmit = (e) => {

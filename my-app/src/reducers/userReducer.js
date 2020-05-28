@@ -7,9 +7,9 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_FAILED,
 
-    GET_USER_START,
-    GET_USER_SUCCESS,
-    GET_USER_FAILED,
+    UPDATE_USER_START,
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_FAILED,
 
     // DELETE_USER_START,
     // DELETE_USER_SUCCESS,
@@ -66,6 +66,24 @@ export const userReducer = (state = intialState, action) => {
             return {
                 ...state,
                 error: action.payload.Error,
+            }
+
+        // user update
+        case UPDATE_USER_START:
+            return{
+                ...state,
+                isFetching: true,
+            }
+        case UPDATE_USER_SUCCESS:
+            return{
+                ...state,
+                user: action.payload, /// do we need to explicitly pass in user properties
+                error: false,
+            }
+        case UPDATE_USER_FAILED:
+            return{
+                ...state,
+                error: action.payload.Error
             }
         default:
             return state

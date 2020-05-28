@@ -11,11 +11,8 @@ import {
     UPDATE_USER_SUCCESS,
     UPDATE_USER_FAILED,
 
-    // DELETE_USER_START,
-    // DELETE_USER_SUCCESS,
-    // DELETE_USER_FAILED,
-
-    // ERROR,
+   DELETE_USER,
+   DELETE_USER_START
 
 } from "../actions/userActions";
 
@@ -25,6 +22,7 @@ const intialState = {
     username: '',
     password: '',
     id: null,
+    deletingUser: false,
     error: null,
 }
 
@@ -85,6 +83,19 @@ export const userReducer = (state = intialState, action) => {
                 ...state,
                 error: action.payload.Error
             }
+
+        // user delete
+        case DELETE_USER_START:
+            return {
+                ...state,
+                deletingUser: true,
+            }
+        case DELETE_USER:
+            return {
+                ...state,
+                user: action.payload,
+                deletingUser: false
+            };
         default:
             return state
     }

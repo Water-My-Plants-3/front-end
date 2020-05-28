@@ -8,7 +8,7 @@ import {
     LOGIN_USER_FAILED,
 
     DELETE_USER_START,
-    DELETE_USER
+    DELETE_USER,
 
 } from "../actions/userActions";
 

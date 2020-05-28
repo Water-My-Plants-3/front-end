@@ -4,7 +4,7 @@ import {POST_PLANT_START, POST_PLANT_SUCCESS, POST_PLANT_FAIL } from '../actions
 const initialState = {
     plants: [],
     isFetching:false,
-    userid: Number,
+    userid: null,
     error:""
 
 }

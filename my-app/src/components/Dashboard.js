@@ -12,30 +12,31 @@ const Dashboard = props => {
         species: "",
         h2oFrequency: "",
     })
-
+console.log("PUID", props);
     const [user, setUser] = useState({
         userid: null,
         username: "",
         password: "",
         phone:""
     })
-
+    
+    fetchPlants(props.userid);
     return (
         <div>
             hello from Dashboard Component
         </div>
     )
 }
-
 const mapStateToProps = state => {
     console.log('BRED', state);
     return {
         isFetching: state.isFetching,
-        username: state.username,
-        userid: state.userid,
+        username: state.user.userName,
+        userid: state.user.userId,
+        plantid: state.plantid,
         error: state.error,
         plants: state.plants
-    };
+    }
 };
 
 export default connect(

@@ -20,11 +20,11 @@ const intialState = {
     userIsFetching: false,
     // user: {},
     username: '',
-    id: null,
+    userid: null,
     password: '',
     // userid: null,
     deletingUser: false,
-    error: null,
+    userError: null,
 }
 
 export const userReducer = (state = intialState, action) => {
@@ -40,7 +40,7 @@ export const userReducer = (state = intialState, action) => {
                 ...state,
                 username: action.payload.username,
                 password: action.payload.password,
-                id: action.payload.id,
+                userid: action.payload.id,
                 userIsFetching: false,
                 error: false,
             }
@@ -60,7 +60,7 @@ export const userReducer = (state = intialState, action) => {
             return {
                 ...state,
                 userIsFetching: false,
-                id: action.id,
+                userId: action.id,
                 username: action.username,
                 error: false,
             }

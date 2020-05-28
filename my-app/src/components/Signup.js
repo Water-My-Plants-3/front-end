@@ -26,6 +26,9 @@ const Signup = props => {
         console.log('you clicked submit', props);
         props.createUser(formValues);
     };
+    useEffect(() => {
+        console.log("heyeer", props)
+   }, [props])
 
     return (
         <div>
@@ -55,7 +58,8 @@ const mapStateToProps = state => {
     console.log('BRE', state);
     return {
         isFetching: state.isFetching,
-        user: state.user,
+        username: state.username,
+        id: state.user.id,
         error: state.error,
     };
 };

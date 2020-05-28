@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
-import { loginUser } from '../actions/userActions'
+import { loginUser, createUser } from '../actions/userActions'
 
 const LoginForm = props => {
 
@@ -49,8 +49,9 @@ const LoginForm = props => {
 }
 
 const mapStateToProps = state => {
-    console.log('BRE', state);
+    console.log('BRELI', state);
     return {
+        id: state.user.id,
         isFetching: state.isFetching,
         user: state.user,
         error: state.error,
@@ -59,5 +60,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { loginUser }
+    { loginUser, createUser }
 )(LoginForm)

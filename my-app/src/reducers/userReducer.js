@@ -17,11 +17,12 @@ import {
 } from "../actions/userActions";
 
 const intialState = {
-    isFetching: false,
-    user: {},
+    userIsFetching: false,
+    // user: {},
     username: '',
-    password: '',
     id: null,
+    password: '',
+    // userid: null,
     deletingUser: false,
     error: null,
 }
@@ -32,7 +33,7 @@ export const userReducer = (state = intialState, action) => {
         case CREATE_USER_START:
             return {
                 ...state,
-                isFetching: true,
+                userIsFetching: true,
             }
         case CREATE_USER_SUCCESS:
             return {
@@ -40,6 +41,7 @@ export const userReducer = (state = intialState, action) => {
                 username: action.payload.username,
                 password: action.payload.password,
                 id: action.payload.id,
+                userIsFetching: false,
                 error: false,
             }
         case CREATE_USER_FAILED:
@@ -52,17 +54,19 @@ export const userReducer = (state = intialState, action) => {
         case LOGIN_USER_START:
             return {
                 ...state,
-                isFetching: true,
+                userIsFetching: true,
             }
         case LOGIN_USER_SUCCESS:
             return {
                 ...state,
-                user: action.payload,
+                userIsFetching: false,
+                // userid: action.payload,
                 error: false,
             }
         case LOGIN_USER_FAILED:
             return {
                 ...state,
+                userIsFetching: false,
                 error: action.payload.Error,
             }
 
@@ -70,7 +74,7 @@ export const userReducer = (state = intialState, action) => {
         case UPDATE_USER_START:
             return{
                 ...state,
-                isFetching: true,
+                userIsFetching: true,
             }
         case UPDATE_USER_SUCCESS:
             return{

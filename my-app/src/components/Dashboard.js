@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
-import { deleteUser } from "../actions/userActions";
+import { deleteUser, loginUser } from "../actions/userActions";
 
-function Dashboard() {
+const Dashboard = props => {
+    console.log("hey", props);
     return (
         <div>
             hello
@@ -21,5 +22,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { deleteUser }
+    { deleteUser, loginUser }
 )(Dashboard)

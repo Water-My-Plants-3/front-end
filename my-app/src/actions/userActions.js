@@ -33,13 +33,15 @@ export const createUser = user => {
     }
 };
 
-
 export const loginUser = user => {
     return dispatch => {
         dispatch({ type: LOGIN_USER_START })
         axiosWithAuth()
             .post("/users/login", user)
             .then(({ data }) => {
+                console.log("ddd", data);
+                console.log("uuu", user);
+                localStorage.setItem("token", data.payload)
                 dispatch({ type: LOGIN_USER_SUCCESS, payload: data })
             })
             .catch(err => {

@@ -3,10 +3,9 @@ import {POST_PLANT_START, POST_PLANT_SUCCESS, POST_PLANT_FAIL } from '../actions
 
 const initialState = {
     plants: [],
-    isFetching:false,
-    userid: null,
-    error:""
-
+    plantsFetching:false,
+    plantUId: null,
+    error:"",
 }
 
 
@@ -16,13 +15,13 @@ export const plantReducer = (state = initialState, action) => {
         case FETCH_PLANT_START:
             return{
                 ...state,
-                isFetching: true
+                plantsFetching: true
             }
         case FETCH_PLANT_SUCCESS:
             return{
                 ...state,
                 plants: action.payload,
-                isFetching: false,
+                plantsFetching: false,
             }
         case FETCH_PLANT_FAIL:
             return{
@@ -33,13 +32,13 @@ export const plantReducer = (state = initialState, action) => {
         case POST_PLANT_START:
             return{
                 ...state,
-                isFetching: true
+                plantsFetching: true
             }
         case POST_PLANT_SUCCESS:
             return{
                 ...state,
                 plants: [...state.plants, action.payload],
-                isFetching: false
+                plantsFetching: false
             }
         case POST_PLANT_FAIL:
             return{

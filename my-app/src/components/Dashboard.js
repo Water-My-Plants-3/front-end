@@ -19,8 +19,10 @@ console.log("PUID", props);
         password: "",
         phone:""
     })
-    
-    fetchPlants(props.userid);
+    useEffect(() => {
+        props.fetchPlants(props.userid);
+   }, [])
+    // useEffect({})
     return (
         <div>
             hello from Dashboard Component

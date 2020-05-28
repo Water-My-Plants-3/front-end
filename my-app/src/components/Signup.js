@@ -9,10 +9,9 @@ const Signup = props => {
         password: '',
         phone: '',
     });
-    // console.log("props in SU", props);
+
     useEffect(() => {
         setFormValues(formValues)
-        // console.log(formValues)
    }, [formValues])
 
     const onChange = (e) => {
@@ -31,7 +30,11 @@ const Signup = props => {
             <form onSubmit={onSubmit}>
                 <div>
                     <label>Name: </label><br />
-                    <input type="text" name="username" onChange={onChange} value={formValues.namusernamee} />
+                    <input 
+                    type="text" 
+                    name="username" onChange={onChange} 
+                    value={formValues.namusernamee}
+                     />
                 </div>
                 <br />
                 <div>

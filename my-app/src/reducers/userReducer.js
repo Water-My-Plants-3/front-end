@@ -24,13 +24,13 @@ const intialState = {
     user: {},
     username: '',
     password: '',
+    id: null,
     error: null,
 }
 
 export const userReducer = (state = intialState, action) => {
     switch (action.type) {
 
-        // user register
         case CREATE_USER_START:
             return {
                 ...state,
@@ -39,9 +39,9 @@ export const userReducer = (state = intialState, action) => {
         case CREATE_USER_SUCCESS:
             return {
                 ...state,
-                // user: action.payload,
                 username: action.payload.username,
                 password: action.payload.password,
+                id: action.payload.id,
                 error: false,
             }
         case CREATE_USER_FAILED:

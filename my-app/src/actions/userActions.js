@@ -1,6 +1,5 @@
 import axiosWithAuth from "../utils/axiosWithAuth";
 
-
 export const ERROR = 'ERROR';
 
 export const CREATE_USER_START = 'CREATE_USER_START';
@@ -11,10 +10,9 @@ export const LOGIN_USER_START = 'LOGIN_USER_START';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_FAILED = 'LOGIN_USER_FAILED';
 
-
-export const GET_USER_START = 'GET_USER_START';
-export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
-export const GET_USER_FAILED = 'GET_USER_FAILED';
+export const UPDATE_USER_START = 'UPDATE_USER_START';
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
+export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED';
 
 export const DELETE_USER_START = 'DELETE_USER_START';
 export const DELETE_USER = 'DELETE_USER';
@@ -35,9 +33,6 @@ export const createUser = user => {
     }
 };
 
-export const LOGIN_USER_START = 'LOGIN_USER_START';
-export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
-export const LOGIN_USER_FAILED = 'LOGIN_USER_FAILED';
 
 export const loginUser = user => {
     return dispatch => {
@@ -53,9 +48,6 @@ export const loginUser = user => {
     }
 };
 
-export const UPDATE_USER_START = 'UPDATE_USER_START';
-export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
-export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED';
 
 export const updateUser = (user) => {
     return dispatch => {
@@ -70,9 +62,6 @@ export const updateUser = (user) => {
             });
     };
 };
-
-export const DELETE_USER = "DELETE_USER";
-export const DELETE_USER_START = "DELETE_USER_START";
 
 export const deleteUser = id => {
     return dispatch => {

@@ -10,9 +10,9 @@ import {
     UPDATE_USER_START,
     UPDATE_USER_SUCCESS,
     UPDATE_USER_FAILED,
-
-   DELETE_USER,
-   DELETE_USER_START
+    
+    DELETE_USER_START,
+    DELETE_USER
 
 } from "../actions/userActions";
 
@@ -85,12 +85,12 @@ export const userReducer = (state = intialState, action) => {
             }
 
         // user delete
-        case DELETE_USER_START:
+        case "DELETE_USER_START":
             return {
                 ...state,
                 deletingUser: true,
             }
-        case DELETE_USER:
+        case "DELETE_USER":
             return {
                 ...state,
                 user: action.payload,

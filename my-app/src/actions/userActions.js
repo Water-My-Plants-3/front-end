@@ -14,6 +14,9 @@ export const GET_USER_START = 'GET_USER_START';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_FAILED = 'GET_USER_FAILED';
 
+export const DELETE_USER_START = 'DELETE_USER_START';
+export const DELETE_USER = 'DELETE_USER';
+
 
 export const createUser = user => {
     return dispatch => {
@@ -29,7 +32,6 @@ export const createUser = user => {
             })
     }
 };
-
 
 export const loginUser = user => {
     return dispatch => {
@@ -59,3 +61,15 @@ export const getUser = () => {
             });
     };
 };
+
+export const deleteUser = id => {
+    return dispatch => {
+        dispatch({ type: DELETE_USER_START });
+        axiosWithAuth()
+        .delete(`${id}`)
+        .then(({ data }) => {
+            dispatch({ type: DELETE_USER, payload: data });
+          })
+        .catch(err => console.log(err));
+    };
+}

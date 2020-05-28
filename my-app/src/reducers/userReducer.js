@@ -7,6 +7,9 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_FAILED,
 
+    DELETE_USER_START,
+    DELETE_USER
+
 } from "../actions/userActions";
 
 const intialState = {
@@ -14,6 +17,7 @@ const intialState = {
     user: {},
     username: '',
     password: '',
+    deletingUser: false,
     error: null,
 }
 
@@ -56,6 +60,20 @@ export const userReducer = (state = intialState, action) => {
                 ...state,
                 error: action.payload.Error,
             }
+
+        // user delete
+        case DELETE_USER_START:
+            return {
+                ...state,
+                deletingUser: true,
+            }
+        case DELETE_USER:
+            return {
+                ...state,
+                user: action.payload,
+                deletingUser: false
+            };
+
         default:
             return state
     }

@@ -52,7 +52,6 @@ export const loginUser = user => {
                     type:
                         LOGIN_USER_SUCCESS,
                     payload: { id: userId, name: userName },
-                    //  username: userName 
                 })
             })
             .catch(err => {

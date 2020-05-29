@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 
 
+
 function App() {
 
 
@@ -15,6 +16,7 @@ function App() {
     <div className="App">
       <Router>
           <Switch>
+
             <Route path="/signup" component={SignUp} />
             <Route path='/login'  component={Login} />
             <Route path='/dashboard'  component={Dashboard} />

@@ -13,6 +13,7 @@ import {
     
     DELETE_USER_START,
     DELETE_USER,
+    DELETE_USER_FAIL,
 
 } from "../actions/userActions";
 
@@ -99,6 +100,11 @@ export const userReducer = (state = intialState, action) => {
                 user: action.payload,
                 deletingUser: false
             };
+        case DELETE_USER_FAIL:
+            return{
+                ...state.payload,
+                error: action.payload.Error
+            }
         default:
             return state
     }

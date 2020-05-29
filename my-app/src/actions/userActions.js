@@ -16,6 +16,8 @@ export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED';
 
 export const DELETE_USER_START = 'DELETE_USER_START';
 export const DELETE_USER = 'DELETE_USER';
+export const DELETE_USER_FAIL = 'DELETE_USER_FAIL';
+
 
 // users
 export const createUser = user => {
@@ -82,8 +84,12 @@ export const deleteUser = id => {
         axiosWithAuth()
             .delete(`/auth/${id}`)
             .then(({ data }) => {
+                console.log(data)
                 dispatch({ type: DELETE_USER, payload: data });
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                dispatch({ type: DELETE_USER_FAIL, payload: err})
+            })
     };
 }
+    

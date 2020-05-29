@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { deleteUser, loginUser } from "../actions/userActions";
 import { fetchPlants } from "../actions/plantActions"
 import PlantForm from './PlantForm'
+// import {updatePlantForm} from './UpdatePlant'
+import PlantCard from './PlantCard'
 
 
 const Dashboard = props => {
@@ -13,6 +15,7 @@ const Dashboard = props => {
         species: "",
         h2oFrequency: "",
     })
+
     console.log("PUID", props);
     const [user, setUser] = useState({
         userid: null,
@@ -38,6 +41,7 @@ const Dashboard = props => {
                 Delete!
                 </button>
             <PlantForm />
+            <updatePlantForm />
         </div>
     )
 }

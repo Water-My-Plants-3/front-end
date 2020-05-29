@@ -1,4 +1,5 @@
 import axiosWithAuth from "../utils/axiosWithAuth";
+import axios from "axios";
 import jwtdecode from 'jwt-decode'
 export const ERROR = 'ERROR';
 
@@ -80,7 +81,7 @@ export const deleteUser = id => {
     return dispatch => {
         dispatch({ type: DELETE_USER_START });
         axiosWithAuth()
-            .delete(`/auth/${id}`)
+            .delete(`/users/${id}`)
             .then(({ data }) => {
                 dispatch({ type: DELETE_USER, payload: data });
             })

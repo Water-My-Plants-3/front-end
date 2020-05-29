@@ -52,7 +52,7 @@ export const plantReducer = (state = initialState, action) => {
                 ...state,
                 plantsFetching: true
             }
-        case DELETE_START_SUCCESS:
+        case DELETE_PLANT_SUCCESS:
             return{
                 ...state,
                 plantsFetching: false

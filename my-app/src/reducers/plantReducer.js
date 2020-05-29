@@ -26,7 +26,8 @@ export const plantReducer = (state = initialState, action) => {
         case FETCH_PLANT_FAIL:
             return{
                 ...state,
-                error: action.payload
+                error: action.payload,
+                plantsFetching: false
             }
         //post a plant 
         case POST_PLANT_START:
@@ -43,7 +44,8 @@ export const plantReducer = (state = initialState, action) => {
         case POST_PLANT_FAIL:
             return{
                 ...state,
-                error: action.payload
+                error: action.payload,
+                plantsFetching: false
             }
         default:
             return state

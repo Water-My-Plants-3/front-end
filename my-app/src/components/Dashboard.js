@@ -28,7 +28,7 @@ const Dashboard = props => {
       };
     useEffect(() => {
         props.fetchPlants(props.userid);
-    }, [])
+    }, [props.isFetching])
     return (
         <div>
             hello from Dashboard Component

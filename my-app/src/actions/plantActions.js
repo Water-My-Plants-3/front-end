@@ -13,7 +13,7 @@ export const PUT_PLANT_SUCCESS = "PUT_PLANT_SUCCESS"
 export const PUT_PLANT_FAIL = "PUT_PLANT_FAIL"
 
 export const DELETE_PLANT_START = "DELETE_PLANT_START"
-export const DELETE_PlANT_SUCCESS = "DELETE_PLANT_SUCCESS"
+export const DELETE_PLANT_SUCCESS = "DELETE_PLANT_SUCCESS";
 export const DELETE_PLANT_FAIL = "DELETE_PLANT_FAIL"
 
 
@@ -71,7 +71,7 @@ export const deletePlant = (plantid) => {
             .delete(`/${plantid}`)  
             .then(res => {
                 console.log(res)
-                dispatch({ type: DELETE_PlANT_SUCCESS, payload: res })
+                dispatch({ type: DELETE_PLANT_SUCCESS, payload: res })
             })
             .catch(err => {
                 dispatch({ type: DELETE_PLANT_FAIL, payload: err })

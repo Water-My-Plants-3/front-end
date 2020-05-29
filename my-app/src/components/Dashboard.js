@@ -30,9 +30,16 @@ const Dashboard = props => {
     console.log("fetch", props.fetchPlants);
     const handleDelete = () => {
         props.deleteUser(props.userid);
+        history.push('/');
+        window.location.reload(true)
     };
     const handleFetch = () => {
         props.fetchPlants(props.userid);
+    };
+    useEffect(()=>{
+        //populate plants continer on mount
+        props.fetchPlants(props.userid);
+        console.log(props.plants, '<-------MY PLANTS------->')
     }, [])
     useEffect(()=>{
         console.log(props.plants, '<-------MY PLANTS------->')
@@ -49,7 +56,7 @@ const Dashboard = props => {
             type='button' 
             value='LOG OUT'
             style={{backgroundColor: 'lightblue', borderColor:'darkblue', color:'white'}}
-            onClick={()=>{history.push('/')}}
+            onClick={()=>{ history.push('/');window.location.reload(true);}}
             />
             <br/><br/>
             <StyledInputs 

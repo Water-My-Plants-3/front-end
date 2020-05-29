@@ -60,7 +60,7 @@ const mapStateToProps = state => {
         isFetching: state.isFetching,
         nickname: state.nickname,
         species: state.species,
-        h2oFrequency: state.species,
+        h2oFrequency: state.h2oFrequency,
     }
 }
 export default connect(

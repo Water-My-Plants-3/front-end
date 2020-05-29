@@ -68,7 +68,7 @@ export const deletePlant = (plantid) => {
     return dispatch => {
         dispatch({ type: DELETE_PLANT_START })
         axiosWithAuth()
-            .delete(`/${plantid}`) // waiting on endpoint to delete plant 
+            .delete(`/${plantid}`)  
             .then(res => {
                 console.log(res)
                 dispatch({ type: DELETE_PlANT_SUCCESS, payload: res })

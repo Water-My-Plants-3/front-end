@@ -9,3 +9,4 @@ const PlantCard = props => {
         </div>
     )
 }
+export default PlantCard

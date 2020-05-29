@@ -1,6 +1,5 @@
 import axiosWithAuth from "../utils/axiosWithAuth";
 import jwtdecode from 'jwt-decode'
-
 export const ERROR = 'ERROR';
 
 export const CREATE_USER_START = 'CREATE_USER_START';
@@ -55,7 +54,9 @@ export const loginUser = user => {
                 })
             })
             .catch(err => {
-                dispatch({ type: LOGIN_USER_FAILED, payload: err });
+                console.log(err, `<-----This is paylod from userActions---->`);
+                
+                dispatch({ type: LOGIN_USER_FAILED, payload: err.response });
             })
     }
 };
@@ -69,6 +70,7 @@ export const updateUser = (user) => {
                 dispatch({ type: UPDATE_USER_SUCCESS, payload: response.data });
             })
             .catch(err => {
+                
                 dispatch({ type: UPDATE_USER_FAILED, payload: err });
             });
     };

@@ -6,6 +6,8 @@ import PlantForm from './components/PlantForm';
 import SignUp from './components/Signup';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import { MarketingPage } from "../src/marketing-page/index";
+import { About } from "../src/marketing-page/about";
 
 
 function App() {
@@ -13,29 +15,15 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        PLANTS LIFE 🌵
-        <Router>
-          <div className="App">
-            <ul>
-              <li>
-                <Link to="/signup">Signup</Link>
-              </li>
-              <li>
-                <Link to="/login">login</Link>
-              </li>
-              <li>
-                <Link to="/dashboard">dashboard</Link>
-              </li>
-            </ul>
-            <Switch>
-              <Route path="/signup" component={SignUp} />
-              <Route path='/login'  component={Login} />
-              <Route path='/dashboard'  component={Dashboard} />
-            </Switch>
-          </div>
-        </Router>
-      </header>
+      <Router>
+          <Switch>
+            <Route exact path="/" component={MarketingPage} />
+            <Route path="/signup" component={SignUp} />
+            <Route path='/login'  component={Login} />
+            <Route path='/dashboard'  component={Dashboard} />
+            <Route path='/about' component={About}/>
+          </Switch>
+      </Router>
     </div>
   );
 }

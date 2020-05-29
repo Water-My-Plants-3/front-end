@@ -29,9 +29,12 @@ const Dashboard = props => {
     const handleDelete = () => {
         props.deleteUser(props.userid);
     };
-    useEffect(() => {
+    const handleFetch = () => {
         props.fetchPlants(props.userid);
-    }, [])
+    };
+    // useEffect(() => {
+    //     props.fetchPlants(props.userid);
+    // }, [])
     return (
         <div>
             hello from Dashboard Component
@@ -39,6 +42,11 @@ const Dashboard = props => {
                 onClick={handleDelete}
             >
                 Delete!
+                </button>
+            <button
+                onClick={handleFetch}
+            >
+                Fetch!
                 </button>
             <PlantForm />
             <UpdatePlant />
@@ -48,10 +56,11 @@ const Dashboard = props => {
 const mapStateToProps = state => {
     console.log('BRED', state);
     return {
-        isFetching: state.isFetching,
+        isFetching: state.user.userIsFetching,
+        plantFetching: state.plants.plantsFetching,
         username: state.user.userName,
         userid: state.user.userid,
-        plantid: state.plantid,
+        plantid: state.plants.plantid,
         error: state.error,
         plants: state.plants,
     }

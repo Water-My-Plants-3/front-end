@@ -1,0 +1,132 @@
+#about {
+    background-color: @everglade;
+    color: white;
+
+    nav {
+        display: flex;
+        padding: 1% 0;
+
+        .left-side2 {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            h2 {
+                padding: 0 10% 0 5%;
+                white-space: nowrap;
+
+                @media (max-width: 500px) {
+                    font-size: 2rem;
+                    padding: 4% 5%;
+                }
+            }
+            a {
+                .a-styles();
+
+                @media (max-width: 500px) {
+                    display: none;
+                }
+            }
+            a:hover {
+                color: @tea-green;
+            }
+        }
+        .right-side2 {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            a {
+                .a-styles();
+
+                @media (max-width: 500px) {
+                    display: none;
+                }
+            }
+            a:last-child {
+                padding-right: 0;
+            }
+            a:hover {
+                color: @tea-green;
+            }
+        }
+    } // end of nav
+} // end of #about
+
+#meet-the-team {
+    background-color: #F9F9F9;
+
+    @media (max-width: 500px) {
+        background-color: white;
+    }
+
+    h2 {
+       padding: 4% 0 2% 2.4%; 
+
+       @media (max-width: 500px) {
+        font-size: 1.8rem;
+        font-weight: bold;
+       }
+    }
+    .container {
+        display: flex;
+        padding: 0 1.5%;
+        height: 100vh;
+        background-image: url('https://images.unsplash.com/photo-1536882240095-0379873feb4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80'); 
+        background-position: right;
+        background-size: cover;
+
+        @media (max-width: 500px) {
+            background-image: none;
+            flex-direction: column;
+        }
+
+        div {
+            margin: 1%;
+
+            @media (max-width: 500px) {
+                display: flex;
+                margin: 4% 1%;
+            }
+
+            a {
+                text-decoration: none;
+                color: @heavy-metal;
+
+                @media (max-width: 500px) {
+                    display: flex;
+                    width: 50%;
+                }
+
+                img {
+                    border-radius: 3px;
+                    border: 2px solid @everglade;
+                }
+            } // end of a
+            .container-text {
+                
+                @media (max-width: 500px) {
+                    display: flex;
+                    flex-direction: column;
+                    width: 50%;
+                    line-height: 1.5;
+                    padding: 0 2%;
+                }
+
+                h3 {
+                    padding: 4% 0;
+                    color: @heavy-metal;
+                }
+            } // end of container-text
+            .inverse {
+
+                @media (max-width: 500px) {
+                    order: -1;
+                    text-align: right;
+                }
+            } // end of .inverse
+        } // end of div
+    } // end of .container
+} // end of meet-the-team

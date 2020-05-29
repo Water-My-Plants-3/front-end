@@ -23,30 +23,30 @@ const PlantForm = props => {
     }
 
     return (
-        <>
-            <h2>PlantForm Component</h2>
-            <form onSubmit={handleSubmit}>
+        <><br/><br/>
+            <h2>PlantForm Component</h2><br/><br/>
+            <form onSubmit={handleSubmit}><br/><br/>
                 <input
                     type="text"
                     placeholder="nickname"
                     name="name"
                     value={plants.name}
                     onChange={e => handleChange(e)}
-                />
+                /><span/>
                 <input
                     type="text"
                     placeholder="species"
                     name="species"
                     value={plants.species}
                     onChange={e => handleChange(e)}
-                />
+                /><span/>
                 <input
                     type="text"
                     placeholder="h2oFrequency"
                     name="water_freq"
                     value={plants.water_freq}
                     onChange={e => handleChange(e)}
-                />
+                /><span/>
                 <button onClick={handleSubmit}> Submit</button>
             </form>
         </>

@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import { deleteUser, loginUser } from "../actions/userActions";
 import { fetchPlants } from "../actions/plantActions"
 import PlantForm from './PlantForm'
-
+import { formStyles } from "../styles/formStyles.js";
+import { PlantCard } from "./PlantCard";
+import { useHistory } from "react-router-dom";
 
 const Dashboard = props => {
-
+    const history = useHistory()
+    const { Tittle, StyledInputs, CardContainer } = formStyles
     const [plants, setPlants] = useState({
         id: null,
         nickname: "",
@@ -29,15 +32,35 @@ const Dashboard = props => {
     useEffect(() => {
         props.fetchPlants(props.userid);
     }, [])
+    useEffect(()=>{
+        console.log(props.plants, '<-------MY PLANTS------->')
+    }, [props])
     return (
         <div>
-            hello from Dashboard Component
-            <button
-                onClick={handleDelete}
-            >
-                Delete!
-                </button>
+            <Tittle>{`Dashboard`}</Tittle><br/><br/>
+            <StyledInputs 
+            type='button'
+            style={{backgroundColor: '#ff615d', borderColor:'#f00', color:'white'}} 
+            value='DELETE MY ACCOUNT' 
+            onClick={handleDelete}/><br/><br/>
+            <StyledInputs 
+            type='button' 
+            value='LOG OUT'
+            style={{backgroundColor: 'lightblue', borderColor:'darkblue', color:'white'}}
+            onClick={()=>{history.push('/')}}
+            />
+            <br/><br/>
             <PlantForm />
+            <br/><br/>
+            <CardContainer>
+                { 
+                    props.plants.plants.map(plant=>{
+                        return <PlantCard key={plant.id} plantInfo={plant}/>
+                    })
+                }
+            </CardContainer>
+            
+
         </div>
     )
 }

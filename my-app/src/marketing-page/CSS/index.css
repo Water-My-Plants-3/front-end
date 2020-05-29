@@ -289,7 +289,6 @@ img {
 }
 .bottom-section .bottom-section-text {
   width: 30%;
-  text-decoration: none;
 }
 @media (max-width: 500px) {
   .bottom-section .bottom-section-text {
@@ -373,23 +372,23 @@ img {
   display: flex;
   padding: 1% 0;
 }
-#about nav .left-side2 {
+#about nav .left-side {
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
-#about nav .left-side2 h2 {
+#about nav .left-side h2 {
   padding: 0 10% 0 5%;
   white-space: nowrap;
 }
 @media (max-width: 500px) {
-  #about nav .left-side2 h2 {
+  #about nav .left-side h2 {
     font-size: 2rem;
     padding: 4% 5%;
   }
 }
-#about nav .left-side2 a {
+#about nav .left-side a {
   text-decoration: none;
   color: white;
   font-size: 1.6rem;
@@ -397,21 +396,16 @@ img {
   flex-basis: 20%;
   white-space: nowrap;
 }
-@media (max-width: 500px) {
-  #about nav .left-side2 a {
-    display: none;
-  }
-}
-#about nav .left-side2 a:hover {
+#about nav .left-side a:hover {
   color: #CDEFB3;
 }
-#about nav .right-side2 {
+#about nav .right-side {
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
-#about nav .right-side2 a {
+#about nav .right-side a {
   text-decoration: none;
   color: white;
   font-size: 1.6rem;
@@ -420,14 +414,14 @@ img {
   white-space: nowrap;
 }
 @media (max-width: 500px) {
-  #about nav .right-side2 a {
+  #about nav .right-side a {
     display: none;
   }
 }
-#about nav .right-side2 a:last-child {
+#about nav .right-side a:last-child {
   padding-right: 0;
 }
-#about nav .right-side2 a:hover {
+#about nav .right-side a:hover {
   color: #CDEFB3;
 }
 #meet-the-team {

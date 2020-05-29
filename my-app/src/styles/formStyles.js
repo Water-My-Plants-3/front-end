@@ -28,6 +28,43 @@ export const formStyles = {
     border: 1px solid black;
     border-radius: 5px;
     border-bottom: 4px solid #235B2D;
-    padding: 5px;
+    padding: 1rem;
     `,
+    StyledButton: styled.button`
+        
+    `,
+    CardContainer: styled.div`
+    width: 80%;
+    max-height: 90%;
+    margin: 0 auto;
+    box-shadow: 3px 3px #888888;
+    border: 1px solid black;
+    border-radius: 5px;
+    border-top: 20px solid #235B2D;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: baseline;
+    align-content: flex-start;
+    padding: 1%;
+    
+    `,
+    StyledPlantCard: styled.div`
+    max-width: 15%;
+    max-height: 40%
+    box-shadow: 3px 3px #888888;
+    border: 1px solid black;
+    border-radius: 5px;
+    `,
+    PlantPortrait: styled.img`
+    width:80%;
+    border: 1px solid black;
+    border-radius: 50%;
+    `,
+    PlantInfo: styled.p`
+    max-width: 90%;
+    paddin: 2px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    `
 }

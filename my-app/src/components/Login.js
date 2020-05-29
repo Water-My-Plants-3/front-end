@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
-import { loginUser, createUser } from '../actions/userActions'
-
+import { loginUser, createUser } from '../actions/userActions';
+import { formStyles } from "../styles/formStyles";
+import { useHistory } from "react-router-dom";
 const LoginForm = props => {
-
+    const history = useHistory()
     const [login, setLogin] = useState({
         username: '',
         password: '',
     })
+    const { StyledForm,
+        StyledError,
+        Tittle,
+        StyledInputs
+     } = formStyles
 
     const onChange = (e) => {
         setLogin({
@@ -19,32 +25,18 @@ const LoginForm = props => {
     const onSubmit = e =>{
         e.preventDefault()
         props.loginUser(login)
+        history.push("/dashboard")
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <div>
-                  <input 
-                    type="text" 
-                    placeholder="username"
-                    name="username"
-                    onChange={onChange} 
-                    value={login.namusername}
-                />
-                </div>
-                <div>
-                    <input
-                     type="password"
-                     placeholder="password"
-                     name="password" 
-                     onChange={onChange} 
-                     value={login.password}
-                    />
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        <StyledForm onChange={onChange} onSubmit={onSubmit} className='loginForm'>
+        <Tittle>Login</Tittle>
+        <label>Username: </label>
+        <StyledInputs required type='text' name='username' value={login.username}/>
+        <label>Password: </label>
+        <StyledInputs required type='password' name='password' value={login.password}/>
+        <StyledInputs style={{margin: '1rem 0'}} type='submit' value='Log In'/>
+        </StyledForm>
     )
 }
 

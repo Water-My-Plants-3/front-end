@@ -21,15 +21,15 @@ export const fetchPlants = userid => {
     console.log("id is", userid)
     return dispatch => {
         dispatch({ type: FETCH_PLANT_START })
-        return axiosWithAuth()
+        axiosWithAuth()
             .get(`/plants/user/${userid}`)
             .then(res => {
                 console.log("hetir", res)
-            dispatch({ type: FETCH_PLANT_SUCCESS, payload: res })
+                dispatch({ type: FETCH_PLANT_SUCCESS, payload: res.data })
             })
             .catch(err => {
                 console.log("not here", err);
-            dispatch({ type: FETCH_PLANT_FAIL, payload: err })
+                dispatch({ type: FETCH_PLANT_FAIL, payload: err })
             })
     }
 };
@@ -38,23 +38,43 @@ export const createPlant = (post) => {
     return dispatch => {
         dispatch({ type: POST_PLANT_START })
         axiosWithAuth()
-            .post(`/plants`)
-            .then(res => { console.log(res) })
+            .post(`/plants`, post)
+            .then(res => {
+                console.log("Im res", res)
+                dispatch({ type: POST_PLANT_SUCCESS, payload: res })
+            })
+            .catch(err => {
+                dispatch({ type: POST_PLANT_FAIL, payload: err })
+            })
     }
 }
 
-export const updatePlant = () => {
+export const updatePlant = (plantid) => {
     return dispatch => {
         dispatch({ type: PUT_PLANT_START })
         axiosWithAuth()
-            .put(`${URL}`)  // waiting on endpoint to update plant 
+            .put(`/${plantid}`)
+            .then(res => {
+                console.log(res)
+                dispatch({ type: POST_PLANT_SUCCESS, payload: res })
+            })
+            .catch(err => {
+                dispatch({ type: POST_PLANT_FAIL, payload: err })
+            })
     }
 }
 
-export const deletePlant = () => {
+export const deletePlant = (plantid) => {
     return dispatch => {
         dispatch({ type: DELETE_PLANT_START })
         axiosWithAuth()
-            .delete(`${URL}`) // waiting on endpoint to delete plant 
+            .delete(`/${plantid}`) // waiting on endpoint to delete plant 
+            .then(res => {
+                console.log(res)
+                dispatch({ type: DELETE_PlANT_SUCCESS, payload: res })
+            })
+            .catch(err => {
+                dispatch({ type: DELETE_PLANT_FAIL, payload: err })
+            })
     }
 }

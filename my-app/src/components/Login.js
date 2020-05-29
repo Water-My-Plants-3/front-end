@@ -44,8 +44,8 @@ const mapStateToProps = state => {
     console.log('BRELI', state);
     return {
         id: state.user.id,
-        isFetching: state.isFetching,
-        user: state.user,
+        isFetching: state.user.isFetching,
+        username: state.user.name,
         error: state.error,
     };
 };

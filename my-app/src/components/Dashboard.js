@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import { deleteUser, loginUser } from "../actions/userActions";
 import { fetchPlants } from "../actions/plantActions"
 import PlantForm from './PlantForm'
+import { formStyles } from "../styles/formStyles.js";
+import { PlantCard } from "./PlantCard";
+import { useHistory } from "react-router-dom";
 import UpdatePlant from './UpdatePlant'
-import PlantCard from './PlantCard'
-
 
 const Dashboard = props => {
-
+    const history = useHistory()
+    const { Tittle, StyledInputs, CardContainer } = formStyles
     const [plants, setPlants] = useState({
         id: null,
         nickname: "",
@@ -31,25 +33,43 @@ const Dashboard = props => {
     };
     const handleFetch = () => {
         props.fetchPlants(props.userid);
-    };
-    // useEffect(() => {
-    //     props.fetchPlants(props.userid);
-    // }, [])
+    }, [])
+    useEffect(()=>{
+        console.log(props.plants, '<-------MY PLANTS------->')
+    }, [props])
     return (
         <div>
-            hello from Dashboard Component
-            <button
-                onClick={handleDelete}
-            >
-                Delete!
-                </button>
-            <button
-                onClick={handleFetch}
-            >
-                Fetch!
-                </button>
+            <Tittle>{`Dashboard`}</Tittle><br/><br/>
+            <StyledInputs 
+            type='button'
+            style={{backgroundColor: '#ff615d', borderColor:'#f00', color:'white'}} 
+            value='DELETE MY ACCOUNT' 
+            onClick={handleDelete}/><br/><br/>
+            <StyledInputs 
+            type='button' 
+            value='LOG OUT'
+            style={{backgroundColor: 'lightblue', borderColor:'darkblue', color:'white'}}
+            onClick={()=>{history.push('/')}}
+            />
+            <br/><br/>
+            <StyledInputs 
+            type='button' 
+            value='LOAD MY PLANTS'
+            style={{backgroundColor: 'lightgreen', borderColor:'darkgreen', color:'white'}}
+            onClick={handleFetch}
+            />
+            <br/><br/>
             <PlantForm />
+            <br/><br/>
             <UpdatePlant />
+            <br/><br/>
+            <CardContainer>
+                { 
+                    props.plants.plants.map(plant=>{
+                        return <PlantCard key={plant.id} plantInfo={plant}/>
+                    })
+                }
+            </CardContainer>
         </div>
     )
 }

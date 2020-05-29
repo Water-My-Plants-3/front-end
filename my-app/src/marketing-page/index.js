@@ -29,8 +29,8 @@ return(
     <div className="bottom-section-text"> 
       <p>Plant Parenthood is an app that helps you care for all the plants you have brought into your life.</p>
       <div className="second-para">By making sure you get watering reminders at the right time for each plant, we hope that you and your plants live a long and healthy life together!</div>
-      <NavLink className='btn' to="/">SIGN UP TODAY!</NavLink>
-      <NavLink className='btn2' to="/">GET STARTED!</NavLink>
+      <NavLink className='btn' to="/signup">SIGN UP TODAY!</NavLink>
+      <NavLink className='btn2' to="/signup">GET STARTED!</NavLink>
       <NavLink className='btn3' to="/about">ABOUT US</NavLink>
     </div>
   </section>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import { loginUser, createUser } from '../actions/userActions';
 import { formStyles } from "../styles/formStyles";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 
 const LoginForm = props => {
     const history = useHistory()
@@ -47,6 +47,10 @@ const LoginForm = props => {
         <label>Password: </label>
         <StyledInputs required type='password' name='password' value={login.password}/>
         <StyledInputs style={{margin: '1rem 0'}} type='submit' value='Log In'/>
+            <br/>
+            <NavLink to="/signup"><StyledInputs type='button' style={{margin: ' 0'}} value='Register'/></NavLink>
+            <br/>
+            <NavLink to="/"><StyledInputs type='button' style={{margin: ' 0'}} value='Home'/></NavLink>
         </StyledForm>
     )
 }

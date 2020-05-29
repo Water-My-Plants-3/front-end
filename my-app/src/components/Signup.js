@@ -5,7 +5,7 @@ import { signUpFormSchema } from "../constants/validation";
 import { initialFormValues, initialErrors, formatMyphone } from "../constants/SignUpConstants";
 import { formStyles } from "../styles/formStyles";
 import * as yup from "yup";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 const Signup = props => {
     
     const history = useHistory()
@@ -13,7 +13,8 @@ const Signup = props => {
      const { StyledForm,
         StyledError,
         Tittle,
-        StyledInputs
+        StyledInputs,
+        StyledButton
      } = formStyles
     // signup form state hooks ________________________________________________________
     const [ signUpformValues, setSignUpformValues ] = useState(initialFormValues)
@@ -120,7 +121,13 @@ const Signup = props => {
             <label>Phone Number: </label>
             <StyledInputs maxLength='18' type='tel' className='phone' name='phone' value={formatMyphone(phone)[0]}  placeholder='(123)-123-1234'/>
             <StyledError hidden={!errors.phoneHasErrors}>{errors.phone}</StyledError>
+            <br/>
             <StyledInputs style={{margin: ' 0'}} type='submit' className='submitbtn' value='Create Account' disabled={!signUpValid}/>
+            <br/>
+            <NavLink to="/login"><StyledInputs type='button' style={{margin: ' 0'}} value='Login'/></NavLink>
+            <br/>
+            <NavLink to="/"><StyledInputs type='button' style={{margin: ' 0'}} value='Home'/></NavLink>
+
         </StyledForm>
     )
 }

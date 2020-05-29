@@ -53,7 +53,7 @@ const mapStateToProps = state => {
     return {
         id: state.user.id,
         isFetching: state.user.isFetching,
-        username: state.user.username,
+        username: state.user.name,
         error: state.error,
     };
 };

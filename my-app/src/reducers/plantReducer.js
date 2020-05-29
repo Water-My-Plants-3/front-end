@@ -37,7 +37,7 @@ export const plantReducer = (state = initialState, action) => {
         case POST_PLANT_SUCCESS:
             return{
                 ...state,
-                plants: [...state.plants, action.payload],
+                // plants: ...state.plants, action.payload,
                 plantsFetching: false
             }
         case POST_PLANT_FAIL:

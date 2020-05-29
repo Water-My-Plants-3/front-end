@@ -18,11 +18,9 @@ import {
 
 const intialState = {
     userIsFetching: false,
-    // user: {},
     username: '',
     userid: null,
     password: '',
-    // userid: null,
     deletingUser: false,
     userError: null,
 }
@@ -60,8 +58,8 @@ export const userReducer = (state = intialState, action) => {
             return {
                 ...state,
                 userIsFetching: false,
-                userId: action.id,
-                username: action.username,
+                userid: action.payload.id,
+                username: action.payload.name,
                 error: false,
             }
         case LOGIN_USER_FAILED:
@@ -80,7 +78,7 @@ export const userReducer = (state = intialState, action) => {
         case UPDATE_USER_SUCCESS:
             return{
                 ...state,
-                user: action.payload, // do we need to explicitly pass in user properties
+                user: action.payload, 
                 error: false,
             }
         case UPDATE_USER_FAILED:

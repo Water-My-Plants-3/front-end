@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import { deleteUser, loginUser } from "../actions/userActions";
 import { fetchPlants } from "../actions/plantActions"
+import PlantForm from './PlantForm'
 
 
 const Dashboard = props => {
@@ -19,6 +20,7 @@ const Dashboard = props => {
         password: "",
         phone: ""
     })
+    console.log("fetch", props.fetchPlants);
     const handleDelete = () => {
         props.deleteUser(props.userid);
       };
@@ -33,6 +35,7 @@ const Dashboard = props => {
             >
                 Delete!
                 </button>
+            <PlantForm />
         </div>
     )
 }

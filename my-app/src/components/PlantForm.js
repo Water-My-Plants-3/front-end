@@ -1,51 +1,51 @@
-import React, {useState} from 'react'
-import  { createPlant }  from '../actions/plantActions'
+import React, { useState } from 'react'
+import { createPlant } from '../actions/plantActions'
+import { connect } from 'react-redux'
 
 const PlantForm = props => {
     const [plants, setPlants] = useState({
-        id: Number,
-        nickname: "",
+        user_id: props.id,
+        name: "",
         species: "",
-        h2oFrequency: "",
+        water_freq: "",
     })
-
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(plants)
+        console.log(props, "hey from PF")
+        console.log("implants",plants)
         props.createPlant(plants)
-
     }
 
     const handleChange = e => {
         console.log(e.target.value)
-        setPlants({...plants, [e.target.name]: e.target.value})
+        setPlants({ ...plants, [e.target.name]: e.target.value })
     }
 
-    return(
+    return (
         <>
-        <h2>PlantForm Component</h2>
-            <form onSubmit = {handleSubmit}>
+            <h2>PlantForm Component</h2>
+            <form onSubmit={handleSubmit}>
                 <input
-                    type = "text"
-                    placeholder = "nickname"
-                    name = "nickname"
-                    value = {plants.name}
-                    onChange = { e => handleChange(e)}
+                    type="text"
+                    placeholder="nickname"
+                    name="name"
+                    value={plants.name}
+                    onChange={e => handleChange(e)}
                 />
-                <input 
-                    type = "text"
-                    placeholder = "species"
-                    name = "species"
-                    value = {plants.species}
-                    onChange = { e => handleChange(e)}
+                <input
+                    type="text"
+                    placeholder="species"
+                    name="species"
+                    value={plants.species}
+                    onChange={e => handleChange(e)}
                 />
-                <input 
-                    type = "text"
-                    placeholder = "h2oFrequency"
-                    name = "h2oFrequency"
-                    value = {plants.h2oFrequency}
-                    onChange = { e => handleChange(e)}
+                <input
+                    type="text"
+                    placeholder="h2oFrequency"
+                    name="water_freq"
+                    value={plants.water_freq}
+                    onChange={e => handleChange(e)}
                 />
                 <button onClick={handleSubmit}> Submit</button>
             </form>
@@ -54,10 +54,17 @@ const PlantForm = props => {
 }
 
 const mapStateToProps = state => {
-    console.log("%%%", state)
-    return{
-       
+    console.log("BRE%%", state)
+    return {
+        id: state.user.userid,
+        isFetching: state.isFetching,
+        // id: state.plantUID,
+        nickname: state.nickname,
+        species: state.species,
+        h2oFrequency: state.species,
     }
 }
-
-export default PlantForm
+export default connect(
+    mapStateToProps,
+    { createPlant }
+)(PlantForm)

@@ -18,12 +18,12 @@ export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED';
 export const DELETE_USER_START = 'DELETE_USER_START';
 export const DELETE_USER = 'DELETE_USER';
 
-
+// users
 export const createUser = user => {
     return dispatch => {
         dispatch({ type: CREATE_USER_START })
         axiosWithAuth()
-            .post("/users/register", user)
+            .post("/auth/register", user)
             .then(({ data }) => {
                 console.log("aaa", data)
                 dispatch({ type: CREATE_USER_SUCCESS, payload: data })
@@ -38,17 +38,22 @@ export const loginUser = user => {
     return dispatch => {
         dispatch({ type: LOGIN_USER_START })
         axiosWithAuth()
-            .post("/users/login", user)
+            .post("/auth/login", user)
             .then(({ data }) => {
                 console.log(data, "##")
-                localStorage.setItem("token", data.payload)
+                localStorage.setItem("token", data.token)
 
-                const userId = jwtdecode(data.payload).userid
-                const userName = jwtdecode(data.payload).username
-                console.log(userId,"%%")
-                console.log(userName,"%55%")
+                const userId = jwtdecode(data.token).subject
+                const userName = jwtdecode(data.token).username
+                console.log(userId, "%%")
+                console.log(userName, "%55%")
 
-                dispatch({ type: LOGIN_USER_SUCCESS, payload: data, id: userId, username: userName })
+                dispatch({
+                    type:
+                        LOGIN_USER_SUCCESS,
+                    payload: { id: userId, name: userName },
+                    //  username: userName 
+                })
             })
             .catch(err => {
                 dispatch({ type: LOGIN_USER_FAILED, payload: err });
@@ -56,12 +61,11 @@ export const loginUser = user => {
     }
 };
 
-
 export const updateUser = (user) => {
     return dispatch => {
-    dispatch({ type: UPDATE_USER_START });
+        dispatch({ type: UPDATE_USER_START });
         axiosWithAuth()
-        .put(`/users/${user.id}`, user)
+            .put(`/auth/${user.id}`, user)
             .then(response => {
                 dispatch({ type: UPDATE_USER_SUCCESS, payload: response.data });
             })
@@ -75,10 +79,10 @@ export const deleteUser = id => {
     return dispatch => {
         dispatch({ type: DELETE_USER_START });
         axiosWithAuth()
-        .delete(`/users/${id}`)
-        .then(({ data }) => {
-            dispatch({ type: DELETE_USER, payload: data });
-          })
-        .catch(err => console.log(err));
+            .delete(`/auth/${id}`)
+            .then(({ data }) => {
+                dispatch({ type: DELETE_USER, payload: data });
+            })
+            .catch(err => console.log(err));
     };
 }

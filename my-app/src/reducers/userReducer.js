@@ -7,30 +7,41 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_FAILED,
 
+    UPDATE_USER_START,
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_FAILED,
+    
+    DELETE_USER_START,
+    DELETE_USER,
+
 } from "../actions/userActions";
 
 const intialState = {
-    isFetching: false,
-    user: {},
+    userIsFetching: false,
+    // user: {},
     username: '',
+    userid: null,
     password: '',
-    error: null,
+    // userid: null,
+    deletingUser: false,
+    userError: null,
 }
 
 export const userReducer = (state = intialState, action) => {
     switch (action.type) {
 
-        // user register
         case CREATE_USER_START:
             return {
                 ...state,
-                isFetching: true,
+                userIsFetching: true,
             }
         case CREATE_USER_SUCCESS:
             return {
                 ...state,
                 username: action.payload.username,
                 password: action.payload.password,
+                userid: action.payload.id,
+                userIsFetching: false,
                 error: false,
             }
         case CREATE_USER_FAILED:
@@ -43,19 +54,53 @@ export const userReducer = (state = intialState, action) => {
         case LOGIN_USER_START:
             return {
                 ...state,
-                isFetching: true,
+                userIsFetching: true,
             }
         case LOGIN_USER_SUCCESS:
             return {
                 ...state,
-                user: action.payload,
+                userIsFetching: false,
+                userId: action.id,
+                username: action.username,
                 error: false,
             }
         case LOGIN_USER_FAILED:
             return {
                 ...state,
+                userIsFetching: false,
                 error: action.payload.Error,
             }
+
+        // user update
+        case UPDATE_USER_START:
+            return{
+                ...state,
+                userIsFetching: true,
+            }
+        case UPDATE_USER_SUCCESS:
+            return{
+                ...state,
+                user: action.payload, // do we need to explicitly pass in user properties
+                error: false,
+            }
+        case UPDATE_USER_FAILED:
+            return{
+                ...state,
+                error: action.payload.Error
+            }
+
+        // user delete
+        case DELETE_USER_START:
+            return {
+                ...state,
+                deletingUser: true,
+            }
+        case DELETE_USER:
+            return {
+                ...state,
+                user: action.payload,
+                deletingUser: false
+            };
         default:
             return state
     }

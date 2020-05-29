@@ -1,6 +1,8 @@
 import axiosWithAuth from "../utils/axiosWithAuth";
+import jwtdecode from 'jwt-decode'
 
 export const ERROR = 'ERROR';
+
 export const CREATE_USER_START = 'CREATE_USER_START';
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const CREATE_USER_FAILED = 'CREATE_USER_FAILED';
@@ -9,10 +11,12 @@ export const LOGIN_USER_START = 'LOGIN_USER_START';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_FAILED = 'LOGIN_USER_FAILED';
 
+export const UPDATE_USER_START = 'UPDATE_USER_START';
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
+export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED';
 
-export const GET_USER_START = 'GET_USER_START';
-export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
-export const GET_USER_FAILED = 'GET_USER_FAILED';
+export const DELETE_USER_START = 'DELETE_USER_START';
+export const DELETE_USER = 'DELETE_USER';
 
 
 export const createUser = user => {
@@ -30,14 +34,21 @@ export const createUser = user => {
     }
 };
 
-
 export const loginUser = user => {
     return dispatch => {
         dispatch({ type: LOGIN_USER_START })
         axiosWithAuth()
             .post("/users/login", user)
             .then(({ data }) => {
-                dispatch({ type: LOGIN_USER_SUCCESS, payload: data })
+                console.log(data, "##")
+                localStorage.setItem("token", data.payload)
+
+                const userId = jwtdecode(data.payload).userid
+                const userName = jwtdecode(data.payload).username
+                console.log(userId,"%%")
+                console.log(userName,"%55%")
+
+                dispatch({ type: LOGIN_USER_SUCCESS, payload: data, id: userId, username: userName })
             })
             .catch(err => {
                 dispatch({ type: LOGIN_USER_FAILED, payload: err });
@@ -46,16 +57,28 @@ export const loginUser = user => {
 };
 
 
-export const getUser = () => {
+export const updateUser = (user) => {
     return dispatch => {
-    dispatch({ type: GET_USER_START });
+    dispatch({ type: UPDATE_USER_START });
         axiosWithAuth()
-        .get("/users/")
+        .put(`/users/${user.id}`, user)
             .then(response => {
-                dispatch({ type: GET_USER_SUCCESS, payload: response.data });
+                dispatch({ type: UPDATE_USER_SUCCESS, payload: response.data });
             })
             .catch(err => {
-                dispatch({ type: GET_USER_FAILED, payload: err });
+                dispatch({ type: UPDATE_USER_FAILED, payload: err });
             });
     };
 };
+
+export const deleteUser = id => {
+    return dispatch => {
+        dispatch({ type: DELETE_USER_START });
+        axiosWithAuth()
+        .delete(`/users/${id}`)
+        .then(({ data }) => {
+            dispatch({ type: DELETE_USER, payload: data });
+          })
+        .catch(err => console.log(err));
+    };
+}

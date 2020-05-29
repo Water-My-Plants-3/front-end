@@ -17,30 +17,35 @@ export const DELETE_PlANT_SUCCESS = "DELETE_PLANT_SUCCESS"
 export const DELETE_PLANT_FAIL = "DELETE_PLANT_FAIL"
 
 
-export const fetchPlants = () => {
+export const fetchPlants = userid => {
+    console.log("id is", userid)
     return dispatch => {
-        dispatch({ type: FETCH_PLANT_START})
-        axiosWithAuth()
-            .get(`/api/plants`)
+        dispatch({ type: FETCH_PLANT_START })
+        return axiosWithAuth()
+            .get(`/plants/user/${userid}`)
             .then(res => {
-               console.log(res)
+                console.log("hetir", res)
+            dispatch({ type: FETCH_PLANT_SUCCESS, payload: res })
             })
-            .catch(err => dispatch({ type: FETCH_PLANT_FAIL, payload: err}))
+            .catch(err => {
+                console.log("not here", err);
+            dispatch({ type: FETCH_PLANT_FAIL, payload: err })
+            })
     }
-}
+};
 
 export const createPlant = (post) => {
     return dispatch => {
-            dispatch({ type: POST_PLANT_START})
-            axiosWithAuth()
-                .post(`/api/plants`)
-                .then(res => {console.log(res)})
-        }
+        dispatch({ type: POST_PLANT_START })
+        axiosWithAuth()
+            .post(`/plants`)
+            .then(res => { console.log(res) })
     }
+}
 
 export const updatePlant = () => {
     return dispatch => {
-        dispatch({ type: PUT_PLANT_START})
+        dispatch({ type: PUT_PLANT_START })
         axiosWithAuth()
             .put(`${URL}`)  // waiting on endpoint to update plant 
     }
@@ -48,7 +53,7 @@ export const updatePlant = () => {
 
 export const deletePlant = () => {
     return dispatch => {
-        dispatch({ type: DELETE_PLANT_START})
+        dispatch({ type: DELETE_PLANT_START })
         axiosWithAuth()
             .delete(`${URL}`) // waiting on endpoint to delete plant 
     }

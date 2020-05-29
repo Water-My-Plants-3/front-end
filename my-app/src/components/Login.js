@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
-import { loginUser } from '../actions/userActions'
+import { loginUser, createUser } from '../actions/userActions'
 
+const LoginForm = props => {
 
-const LoginForm = (props)=>{
     const [login, setLogin] = useState({
         username: '',
         password: '',
@@ -25,17 +25,22 @@ const LoginForm = (props)=>{
         <div>
             <form onSubmit={onSubmit}>
                 <div>
-                    <label>Name: </label><br />
-                    <input 
+                  <input 
                     type="text" 
-                    name="username" onChange={onChange} 
+                    placeholder="username"
+                    name="username"
+                    onChange={onChange} 
                     value={login.namusername}
-                     />
+                />
                 </div>
-                <br />
                 <div>
-                    <label>password: </label><br />
-                    <input name="password" onChange={onChange} value={login.password} />
+                    <input
+                     type="password"
+                     placeholder="password"
+                     name="password" 
+                     onChange={onChange} 
+                     value={login.password}
+                    />
                 </div>
                 <button type="submit">Submit</button>
             </form>
@@ -44,8 +49,9 @@ const LoginForm = (props)=>{
 }
 
 const mapStateToProps = state => {
-    console.log('BRE', state);
+    console.log('BRELI', state);
     return {
+        id: state.user.id,
         isFetching: state.isFetching,
         user: state.user,
         error: state.error,
@@ -54,5 +60,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { loginUser }
+    { loginUser, createUser }
 )(LoginForm)

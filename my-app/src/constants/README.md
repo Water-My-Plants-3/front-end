@@ -1,1 +1,0 @@
-Put in here any variables that wont change!

@@ -58,7 +58,6 @@ const mapStateToProps = state => {
     return {
         id: state.user.userid,
         isFetching: state.isFetching,
-        // id: state.plantUID,
         nickname: state.nickname,
         species: state.species,
         h2oFrequency: state.species,

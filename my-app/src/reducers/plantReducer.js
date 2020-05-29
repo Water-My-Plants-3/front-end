@@ -1,5 +1,7 @@
 import { FETCH_PLANT_START, FETCH_PLANT_SUCCESS, FETCH_PLANT_FAIL } from '../actions/plantActions'
-import {POST_PLANT_START, POST_PLANT_SUCCESS, POST_PLANT_FAIL } from '../actions/plantActions'
+import { POST_PLANT_START, POST_PLANT_SUCCESS, POST_PLANT_FAIL } from '../actions/plantActions'
+import { DELETE_PLANT_START, DELETE_PLANT_SUCCESS, DELETE_PLANT_FAIL } from '../actions/plantActions'
+
 
 const initialState = {
     plants: [],
@@ -37,10 +39,25 @@ export const plantReducer = (state = initialState, action) => {
         case POST_PLANT_SUCCESS:
             return{
                 ...state,
-                // plants: ...state.plants, action.payload,
                 plantsFetching: false
             }
         case POST_PLANT_FAIL:
+            return{
+                ...state,
+                error: action.payload
+            }
+        //delete a plant 
+        case DELETE_PLANT_START:
+            return{
+                ...state,
+                plantsFetching: true
+            }
+        case DELETE_START_SUCCESS:
+            return{
+                ...state,
+                plantsFetching: false
+            }
+        case DELETE_PLANT_FAIL:
             return{
                 ...state,
                 error: action.payload

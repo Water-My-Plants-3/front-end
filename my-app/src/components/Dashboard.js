@@ -6,6 +6,7 @@ import PlantForm from './PlantForm'
 import { formStyles } from "../styles/formStyles.js";
 import { PlantCard } from "./PlantCard";
 import { useHistory } from "react-router-dom";
+import UpdatePlant from './UpdatePlant'
 
 const Dashboard = props => {
     const history = useHistory()
@@ -16,6 +17,7 @@ const Dashboard = props => {
         species: "",
         h2oFrequency: "",
     })
+
     console.log("PUID", props);
     const [user, setUser] = useState({
         userid: null,
@@ -28,8 +30,8 @@ const Dashboard = props => {
     console.log("fetch", props.fetchPlants);
     const handleDelete = () => {
         props.deleteUser(props.userid);
-      };
-    useEffect(() => {
+    };
+    const handleFetch = () => {
         props.fetchPlants(props.userid);
     }, [])
     useEffect(()=>{
@@ -50,7 +52,16 @@ const Dashboard = props => {
             onClick={()=>{history.push('/')}}
             />
             <br/><br/>
+            <StyledInputs 
+            type='button' 
+            value='LOAD MY PLANTS'
+            style={{backgroundColor: 'lightgreen', borderColor:'darkgreen', color:'white'}}
+            onClick={handleFetch}
+            />
+            <br/><br/>
             <PlantForm />
+            <br/><br/>
+            <UpdatePlant />
             <br/><br/>
             <CardContainer>
                 { 
@@ -59,18 +70,17 @@ const Dashboard = props => {
                     })
                 }
             </CardContainer>
-            
-
         </div>
     )
 }
 const mapStateToProps = state => {
     console.log('BRED', state);
     return {
-        isFetching: state.isFetching,
+        isFetching: state.user.userIsFetching,
+        plantFetching: state.plants.plantsFetching,
         username: state.user.userName,
         userid: state.user.userid,
-        plantid: state.plantid,
+        plantid: state.plants.plantid,
         error: state.error,
         plants: state.plants,
     }

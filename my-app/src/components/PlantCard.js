@@ -17,3 +17,4 @@ export const PlantCard = props => {
         </StyledPlantCard>
     )
 }
+export default PlantCard

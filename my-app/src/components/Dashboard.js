@@ -28,10 +28,10 @@ const Dashboard = props => {
     console.log("fetch", props.fetchPlants);
     const handleDelete = () => {
         props.deleteUser(props.userid);
-      };
+    };
     useEffect(() => {
         props.fetchPlants(props.userid);
-    }, [props.isFetching])
+    }, [])
     return (
         <div>
             hello from Dashboard Component
@@ -41,7 +41,7 @@ const Dashboard = props => {
                 Delete!
                 </button>
             <PlantForm />
-            <UpdatePlant/>
+            <UpdatePlant />
         </div>
     )
 }

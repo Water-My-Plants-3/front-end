@@ -1,4 +1,5 @@
 import axiosWithAuth from "../utils/axiosWithAuth";
+import axios from "axios";
 import jwtdecode from 'jwt-decode'
 
 export const ERROR = 'ERROR';

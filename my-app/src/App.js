@@ -13,29 +13,14 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        PLANTS LIFE 🌵
-        <Router>
-          <div className="App">
-            <ul>
-              <li>
-                <Link to="/signup">Signup</Link>
-              </li>
-              <li>
-                <Link to="/login">login</Link>
-              </li>
-              <li>
-                <Link to="/dashboard">dashboard</Link>
-              </li>
-            </ul>
-            <Switch>
-              <Route path="/signup" component={SignUp} />
-              <Route path='/login'  component={Login} />
-              <Route path='/dashboard'  component={Dashboard} />
-            </Switch>
-          </div>
-        </Router>
-      </header>
+      <Router>
+          <Switch>
+            <Route path="/signup" component={SignUp} />
+            <Route path='/login'  component={Login} />
+            <Route path='/dashboard'  component={Dashboard} />
+
+          </Switch>
+      </Router>
     </div>
   );
 }

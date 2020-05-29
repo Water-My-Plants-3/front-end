@@ -66,7 +66,7 @@ export const userReducer = (state = intialState, action) => {
             return {
                 ...state,
                 userIsFetching: false,
-                error: action.payload.Error,
+                error: action.payload,
             }
 
         // user update

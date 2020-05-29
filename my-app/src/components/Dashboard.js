@@ -20,6 +20,8 @@ const Dashboard = props => {
         password: "",
         phone: ""
     })
+
+    console.log(props, "USERID")
     console.log("fetch", props.fetchPlants);
     const handleDelete = () => {
         props.deleteUser(props.userid);
@@ -44,7 +46,7 @@ const mapStateToProps = state => {
     return {
         isFetching: state.isFetching,
         username: state.user.userName,
-        userid: state.user.userId,
+        userid: state.user.userid,
         plantid: state.plantid,
         error: state.error,
         plants: state.plants,

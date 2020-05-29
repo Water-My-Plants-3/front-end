@@ -25,7 +25,7 @@ export const fetchPlants = userid => {
             .get(`/plants/user/${userid}`)
             .then(res => {
                 console.log("hetir", res)
-                dispatch({ type: FETCH_PLANT_SUCCESS, payload: res })
+                dispatch({ type: FETCH_PLANT_SUCCESS, payload: res.data })
             })
             .catch(err => {
                 console.log("not here", err);

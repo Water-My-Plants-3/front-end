@@ -58,7 +58,7 @@ const mapStateToProps = state => {
     console.log('BRE', state);
     return {
         isFetching: state.isFetching,
-        username: state.username,
+        username: state.user.username,
         id: state.user.id,
         error: state.error,
     };
